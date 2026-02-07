@@ -12,6 +12,10 @@ struct DrillDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
 
+                // Hero image for the drill
+                DrillImageView(drill: drill, mode: .hero)
+                    .padding(.horizontal, -16) // bleed to edges
+
                 // Skill + Level badges
                 HStack(spacing: 8) {
                     if let cat = drill.skillCategory {

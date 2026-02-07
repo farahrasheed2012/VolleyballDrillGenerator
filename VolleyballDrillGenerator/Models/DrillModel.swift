@@ -92,6 +92,7 @@ struct Drill: Codable, Identifiable, Equatable {
     let equipment: [String]
     let source: String
     let image: String
+    let imageAsset: String
 
     /// Convenience to get the typed SkillCategory
     var skillCategory: SkillCategory? {
@@ -101,6 +102,17 @@ struct Drill: Codable, Identifiable, Equatable {
     /// Convenience to get the typed PlayerLevel
     var playerLevel: PlayerLevel? {
         PlayerLevel(rawValue: level)
+    }
+
+    /// Whether the remote image URL points to an animated GIF
+    var hasAnimatedImage: Bool {
+        image.lowercased().hasSuffix(".gif") && !image.isEmpty
+    }
+
+    /// The resolved remote image URL (if any)
+    var imageURL: URL? {
+        guard !image.isEmpty else { return nil }
+        return URL(string: image)
     }
 
     static func == (lhs: Drill, rhs: Drill) -> Bool {

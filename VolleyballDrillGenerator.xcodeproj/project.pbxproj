@@ -18,6 +18,9 @@
 		AA000009 /* DrillStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000009 /* DrillStore.swift */; };
 		AA000010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB000010 /* Assets.xcassets */; };
 		AA000011 /* volleyball_drills.json in Resources */ = {isa = PBXBuildFile; fileRef = AB000011 /* volleyball_drills.json */; };
+		AA000012 /* GIFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000013 /* GIFImageView.swift */; };
+		AA000013 /* DrillImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000014 /* DrillImageView.swift */; };
+		AA000014 /* DrillImages in Resources */ = {isa = PBXBuildFile; fileRef = AB000015 /* DrillImages */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,9 @@
 		AB000010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB000011 /* volleyball_drills.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = volleyball_drills.json; sourceTree = "<group>"; };
 		AB000012 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB000013 /* GIFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImageView.swift; sourceTree = "<group>"; };
+		AB000014 /* DrillImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrillImageView.swift; sourceTree = "<group>"; };
+		AB000015 /* DrillImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DrillImages; sourceTree = "<group>"; };
 		AC000001 /* VolleyballDrillGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VolleyballDrillGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -102,6 +108,8 @@
 				AB000005 /* DrillDetailView.swift */,
 				AB000006 /* DrillListView.swift */,
 				AB000007 /* PracticePlanView.swift */,
+				AB000013 /* GIFImageView.swift */,
+				AB000014 /* DrillImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -110,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				AB000011 /* volleyball_drills.json */,
+				AB000015 /* DrillImages */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -174,6 +183,7 @@
 			files = (
 				AA000010 /* Assets.xcassets in Resources */,
 				AA000011 /* volleyball_drills.json in Resources */,
+				AA000014 /* DrillImages in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +203,8 @@
 				AA000007 /* PracticePlanView.swift in Sources */,
 				AA000008 /* DrillModel.swift in Sources */,
 				AA000009 /* DrillStore.swift in Sources */,
+				AA000012 /* GIFImageView.swift in Sources */,
+				AA000013 /* DrillImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
