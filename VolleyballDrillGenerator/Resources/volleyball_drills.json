@@ -54,6 +54,42 @@
     "image": ""
   },
   {
+    "name": "Over The Net",
+    "skill": "Serving",
+    "level": "New to Volleyball",
+    "description": "1. Line up players on the service line, each with a ball.\n2. Players practice serving the ball over the net repeatedly.\n3. Coach watches technique and offers individual assistance.\n4. Emphasize that getting the serve over is more important than power.\n5. Show proper technique for both overhand and underhand serves.\n6. Repetition is key — run this drill at every practice.",
+    "equipment": ["Volleyballs", "Net"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Serving Tape",
+    "skill": "Serving",
+    "level": "Beginner/Developing",
+    "description": "1. String a tape line from antenna to antenna, about 3 feet above the top of the net.\n2. Players line up on the service line.\n3. Serve the ball overhand so it passes between the net tape and the upper tape line.\n4. Serving over the upper tape or into the net = 2 finger-tip push-ups.\n5. Focus on a flat, controlled trajectory.\n6. Builds low, consistent overhand serves that are hard to return.",
+    "equipment": ["Volleyballs", "Net", "Tape"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Miss The Chairs",
+    "skill": "Serving",
+    "level": "Intermediate",
+    "description": "1. Set up 3 chairs in the back court where serve receivers would stand.\n2. Put a tape circle (2-foot radius) around each chair.\n3. Players serve from behind the end line.\n4. Objective: serve into the lanes between the chairs, NOT hitting any chair or circle.\n5. Hitting a chair or circle = 2 finger-tip push-ups.\n6. Teaches players to serve to the gaps and weak spots of a defense.",
+    "equipment": ["Volleyballs", "Net", "3 Chairs", "Tape"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Target Service Drill",
+    "skill": "Serving",
+    "level": "Intermediate",
+    "description": "1. Place 3 targets on the opposite court: back left, back right, and short center.\n2. Servers line up in groups of 6 on the service line.\n3. Each server gets 10 serves to hit all 3 targets.\n4. Each missed target = 1 set of lines; ball not over net = 2 sets.\n5. Focus on good contact, trajectory, toss, and follow-through.\n6. Builds serving accuracy and consistency under pressure.",
+    "equipment": ["Volleyballs", "Net", "Cones or targets"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
     "name": "Pepper",
     "skill": "Passing/Bumping",
     "level": "Beginner/Developing",
@@ -96,6 +132,60 @@
     "description": "1. Teams of 2 on each side of the net.\n2. Coach initiates play with a toss or serve.\n3. Receiving team must pass, set, and send the ball over.\n4. Winning team stays and rotates to the 'King' side.\n5. Losing team goes to the end of the challenger line.\n6. First team to win 5 rallies on the King side wins.",
     "equipment": ["Volleyball", "Net"],
     "source": "https://usavolleyball.org/resource/top-166-drills-from-around-the-world/",
+    "image": ""
+  },
+  {
+    "name": "Table Top",
+    "skill": "Passing/Bumping",
+    "level": "New to Volleyball",
+    "description": "1. Pair up players and give each pair a ball.\n2. Teach proper forearm passing form: create a flat 'table top' surface with forearms.\n3. Stand with one foot in front of the other, knees bent.\n4. Lift through the ball using your legs, not your arms.\n5. Partners practice controlled passing back and forth.\n6. Focus on keeping the platform flat and steady with every pass.",
+    "equipment": ["Volleyball"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Moving Table Top",
+    "skill": "Passing/Bumping",
+    "level": "New to Volleyball",
+    "description": "1. Form two lines with a coach at each station.\n2. Coach tosses the ball to the left or right at varying heights.\n3. Player shuffles to get into position underneath the ball.\n4. Execute a proper forearm pass back to the coach.\n5. Focus on moving feet first, then setting the platform.\n6. Builds on basic Table Top by adding lateral movement.",
+    "equipment": ["Volleyball"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Continuous Passing",
+    "skill": "Passing/Bumping",
+    "level": "Beginner/Developing",
+    "description": "1. Pair up players of similar skill and give them a ball.\n2. One player tosses the ball to start.\n3. Coach calls out the type of pass: high pass, flat low pass, or self-pass then partner pass.\n4. Players execute the called pass type continuously.\n5. Progress to calling set types (face passes) as well.\n6. Builds controlled passing in a variety of scenarios.",
+    "equipment": ["Volleyball"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Pipeline Passing",
+    "skill": "Passing/Bumping",
+    "level": "Intermediate",
+    "description": "1. Make two tape lines down the middle of the court, 12 feet apart.\n2. Two players pass inside this area starting in the middle.\n3. After each pass, shuffle right, touch the tape line, return to center.\n4. Partner passes back while you are moving.\n5. Goal: 10 consecutive passes (5 each) without dropping.\n6. Builds lateral movement, conditioning, and passing under fatigue.",
+    "equipment": ["Volleyball", "Tape"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Harass The Passer",
+    "skill": "Passing/Bumping",
+    "level": "Intermediate",
+    "description": "1. Set up 2-3 servers on one side with a target player at the net.\n2. Two passers split the court, each with a 'harasser' in their back pocket.\n3. Servers serve the ball to the passers.\n4. The harasser yells, screams, stomps, and feints — but never touches the passer.\n5. Passer must stay focused and pass accurately to the target.\n6. Builds concentration and ability to ignore distractions during play.",
+    "equipment": ["Volleyballs", "Net"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Reaction Passing",
+    "skill": "Passing/Bumping",
+    "level": "Intermediate",
+    "description": "1. Set up 2-3 servers on each side with a line of passers.\n2. Passer stands with their back to the server.\n3. Coach blows the whistle — server serves the ball.\n4. Once the passer hears the ball being struck, they turn around.\n5. Passer must quickly locate the ball and make a good pass.\n6. Simulates quick defensive reaction against fast attacks.",
+    "equipment": ["Volleyballs", "Net", "Whistle"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
     "image": ""
   },
   {
@@ -144,6 +234,33 @@
     "image": ""
   },
   {
+    "name": "Set and Follow",
+    "skill": "Setting",
+    "level": "Beginner/Developing",
+    "description": "1. Put players in groups of three with one ball.\n2. Two players on one side, one on the other.\n3. A player from the two-side tosses to the single player.\n4. Single player sets it back, then follows their set to that side.\n5. The tosser follows their toss to the single side.\n6. Continue continuously — builds setting skills, footwork, and keeping your head up.",
+    "equipment": ["Volleyball"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Walking Setters",
+    "skill": "Setting",
+    "level": "Intermediate",
+    "description": "1. Clear the court for setters (or all players).\n2. Start in one corner. Set the ball while walking forward across the court.\n3. At the other side, move over 10 feet along the sideline.\n4. Walk backward while maintaining controlled sets.\n5. Then shuffle sideways across the court while setting.\n6. Builds ball control, concentration, and coordination while moving.",
+    "equipment": ["Volleyball"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Around The World Setting",
+    "skill": "Setting",
+    "level": "Beginner/Developing",
+    "description": "1. Set up one line of players outside the court between the back and attack line.\n2. Three tossers on each side of the net.\n3. Player enters and receives a bump from tosser 1, shuffles to tosser 2 for a set, then tosser 3 for a bump.\n4. Repeat the sequence on the other side of the net.\n5. Dotted lines = passes back to tossers; solid lines = player movement.\n6. Works passing, setting, and footwork. Pick up pace for conditioning.",
+    "equipment": ["Volleyballs", "Net"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
     "name": "Approach and Hit",
     "skill": "Hitting/Spiking",
     "level": "New to Volleyball",
@@ -186,6 +303,60 @@
     "description": "1. Player stands on a box or platform at the net.\n2. Coach holds or tosses the ball just above net height.\n3. Player practices arm swing and wrist snap from a standing position.\n4. Focus on hand on top of the ball, snapping down.\n5. Do 15 reps, then step off the box and practice with a jump.\n6. Builds proper contact point without worrying about timing.",
     "equipment": ["Volleyball", "Net", "Box or platform"],
     "source": "https://usavolleyball.org/wp-content/uploads/2020/12/CAP-II-Coaches-Favorite-Drill-Form-Oates.pdf",
+    "image": ""
+  },
+  {
+    "name": "Snap The Wrist",
+    "skill": "Hitting/Spiking",
+    "level": "New to Volleyball",
+    "description": "1. Each player gets a ball and stands 10-15 feet from a wall.\n2. Toss the ball up and hit it using proper reach-back, strike, and follow-through.\n3. The ball should land on the floor a couple feet before the wall, bounce up and deflect back.\n4. Repeat continuously — if it hits the wall first, you need more wrist snap.\n5. If it goes straight down, ease up on the snap.\n6. Teaches the proper wrist snap that sends the ball sharply downward.",
+    "equipment": ["Volleyball", "Wall"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Tennis Ball Throw",
+    "skill": "Hitting/Spiking",
+    "level": "New to Volleyball",
+    "description": "1. Set up several stations across the net for attackers.\n2. Player starts at the attack line with a tennis ball.\n3. Coach hands them the ball as they begin their 3-step approach.\n4. At the top of the jump, throw the tennis ball using hitting motion.\n5. Bring the ball back, keep elbow high, snap wrist, and drive it down.\n6. Pick a spot to aim at — simulates a real spike without worrying about contact.",
+    "equipment": ["Tennis balls", "Net"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "10 Hits Drill",
+    "skill": "Hitting/Spiking",
+    "level": "Beginner/Developing",
+    "description": "1. Include a passer and setter on each side of the net.\n2. Divide remaining players into two hitting groups.\n3. Coach tosses to the passer, who passes to the setter, who sets for the hitter.\n4. Each hitter must complete 10 successful hits (no net tape, ball in court).\n5. No more than 3 tips allowed — the rest must be full hits.\n6. Last person to finish does an extra set of lines. Great for repetition.",
+    "equipment": ["Volleyballs (multiple)", "Net"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Corner Tip Drill",
+    "skill": "Hitting/Spiking",
+    "level": "Intermediate",
+    "description": "1. Place baskets (clothes baskets) inside the attack line on both sides of each court half.\n2. Attackers line up in two groups on either side of the net.\n3. Coach tosses balls up at the net for the attackers.\n4. Hitters decide whether to tip to the near or far basket.\n5. Ball in basket = 1 point. Most points at the end wins.\n6. Add a blocker to make it more game-like — hitter reads the block to decide where to tip.",
+    "equipment": ["Volleyballs", "Net", "Baskets or bins"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Hourglass Attack",
+    "skill": "Hitting/Spiking",
+    "level": "Intermediate",
+    "description": "1. Tape an hourglass shape on the court (narrow in middle, wide at ends).\n2. Divide into four 3-player teams: power hitter, offside hitter, middle hitter.\n3. Power and offside hitters each hit 3 times: sideline, cross-court, and deep middle.\n4. Middle hitters hit sharp right and sharp left to sidelines.\n5. Hits landing outside the hourglass = +1 point; inside = -1 point.\n6. Winning team runs one fewer set of lines. Builds accuracy under pressure.",
+    "equipment": ["Volleyballs", "Net", "Tape"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Find The Hole",
+    "skill": "Hitting/Spiking",
+    "level": "Intermediate",
+    "description": "1. Set up a defense in a standard formation on one side.\n2. Attackers on the other side run a normal 3-hit offense.\n3. Hitters must read the block position and defensive alignment.\n4. Hit the ball to open areas where defenders are NOT positioned.\n5. Switch defensive formations to increase difficulty.\n6. Teaches hitters to read defenses in real time and place shots smartly.",
+    "equipment": ["Volleyballs", "Net"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
     "image": ""
   },
   {
@@ -243,6 +414,51 @@
     "image": ""
   },
   {
+    "name": "Dig Drill",
+    "skill": "Defense/Digging",
+    "level": "New to Volleyball",
+    "description": "1. Coach hits balls at players with moderate power.\n2. Set up 2 or more groups for extra repetition.\n3. Players must get low and pass (dig) the ball up under control.\n4. Focus on proper technique: get low, lift through, don't swing arms.\n5. Absorb the ball rather than meeting it with hard contact.\n6. Basic drill used as a game-time warm up by many teams.",
+    "equipment": ["Volleyballs", "Net"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Dig and Dash",
+    "skill": "Defense/Digging",
+    "level": "Beginner/Developing",
+    "description": "1. Coach at the net, two lines of players in each back corner.\n2. Coach hits a ball down to one line — player digs it back up.\n3. Player immediately sprints to the other side of the net.\n4. Coach flips a tip ball — player must field the tip.\n5. After tip, player goes to the shagging line; shagger joins a dig line.\n6. Builds quickness, proper dig form, and transition footwork.",
+    "equipment": ["Volleyballs", "Net"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Net Save Drill",
+    "skill": "Defense/Digging",
+    "level": "Intermediate",
+    "description": "1. Coach stands at mid-court with balls. Two lines on either side of the attack line.\n2. Coach throws the ball against the net to simulate a net ball.\n3. Player watches where the ball will come off the net.\n4. Important: watch the ball hit the net before moving — don't guess!\n5. Get underneath the ball and make a controlled pass to a teammate.\n6. Teaches proper reaction to unpredictable net rebounds.",
+    "equipment": ["Volleyballs", "Net"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Turn And Dig",
+    "skill": "Defense/Digging",
+    "level": "Beginner/Developing",
+    "description": "1. Set up 4 stations with a player at the net and a group at the back court.\n2. Player at the service line stands with their back to the net.\n3. Net player slaps the ball — back player turns around.\n4. Net player tips or tosses the ball to a random spot.\n5. Back player must locate and dig the ball successfully.\n6. 10 successful digs to finish. Builds reaction and awareness.",
+    "equipment": ["Volleyballs", "Net"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Sit And Recover",
+    "skill": "Defense/Digging",
+    "level": "Intermediate",
+    "description": "1. Six players in normal defensive positions — but sitting on the floor, backs to the coach.\n2. Coach at the net calls 'UP!' — all players jump to their feet.\n3. Coach immediately tips, hits, or tosses the ball to an area.\n4. Players must read where the ball is going and execute a dig.\n5. Progress from 1-hit recovery to full 3-hit plays.\n6. Develops read-and-react skills and quick recovery from disadvantage.",
+    "equipment": ["Volleyballs", "Net"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
     "name": "Mirror Blocking",
     "skill": "Blocking",
     "level": "Beginner/Developing",
@@ -285,6 +501,42 @@
     "description": "1. Two blockers start at the net — one middle, one outside.\n2. Coach or hitter approaches from the opposite side.\n3. Middle blocker closes to the outside blocker to form a double block.\n4. Both jump together, pressing hands and sealing the gap between them.\n5. Repeat from the other side.\n6. Do 8 reps each side. Emphasize communication ('Here! Here!') and timing.",
     "equipment": ["Volleyball", "Net"],
     "source": "https://usavolleyball.org/wp-content/uploads/2020/12/CAP-II-Coaches-Favorite-Drill-Form-Oates.pdf",
+    "image": ""
+  },
+  {
+    "name": "Angle Your Block",
+    "skill": "Blocking",
+    "level": "New to Volleyball",
+    "description": "1. Three blockers set up in blocking positions at the net.\n2. Coach stands on the opposite side and tosses balls to different spots.\n3. Blockers must angle their hands so the ball deflects back into the court.\n4. Toss balls to left, right, and middle — blockers adjust hand angle each time.\n5. Focus on proper hand penetration over the net.\n6. Teaches the fundamental concept of angling blocks inward.",
+    "equipment": ["Volleyballs", "Net"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Slide Block",
+    "skill": "Blocking",
+    "level": "Beginner/Developing",
+    "description": "1. Three blockers on one side, three hitters on the other.\n2. Coach stands at net facing hitters, back to blockers.\n3. Coach points to which hitter will approach — blockers must react.\n4. Blockers slide and shuffle together along the net to set the block.\n5. Quick lateral footwork is key — watch for proper shuffle technique.\n6. Teaches blockers to slide as a unit to cover the attacking position.",
+    "equipment": ["Net"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Shadow Blocking",
+    "skill": "Blocking",
+    "level": "Intermediate",
+    "description": "1. Pair up players of similar skill across the net — no balls.\n2. Attacker approaches from the left side; blocker sets up the block.\n3. Both shuffle to the middle — attacker approaches again, blocker reacts.\n4. Then shuffle to the right for a third approach.\n5. Switch sides after one full run-through.\n6. Teaches blockers to read the attacker's body angle, approach direction, and timing.",
+    "equipment": ["Net"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
+    "image": ""
+  },
+  {
+    "name": "Blind Blocking",
+    "skill": "Blocking",
+    "level": "Intermediate",
+    "description": "1. Pair players across the net. Coach tosses ball to the attacker.\n2. Blocker focuses on the attacker's body — NOT the ball.\n3. Read the attacker's shoulder angle, approach direction, and arm position.\n4. Set up the block based on body language cues.\n5. This breaks the habit of watching the ball and missing the block.\n6. Add a second blocker to practice coordinated blind blocking.",
+    "equipment": ["Volleyballs", "Net"],
+    "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
     "image": ""
   }
 ]
