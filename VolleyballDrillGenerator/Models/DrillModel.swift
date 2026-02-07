@@ -2,8 +2,9 @@ import SwiftUI
 
 // MARK: - Skill Category
 
-/// The six core volleyball skill categories
+/// The seven volleyball skill categories (including Warmup)
 enum SkillCategory: String, CaseIterable, Codable, Identifiable {
+    case warmup = "Warmup"
     case serving = "Serving"
     case passing = "Passing/Bumping"
     case setting = "Setting"
@@ -16,6 +17,7 @@ enum SkillCategory: String, CaseIterable, Codable, Identifiable {
     /// SF Symbol icon for each skill
     var icon: String {
         switch self {
+        case .warmup:   return "flame.fill"
         case .serving:  return "figure.volleyball"
         case .passing:  return "arrow.left.arrow.right"
         case .setting:  return "hands.sparkles"
@@ -26,14 +28,15 @@ enum SkillCategory: String, CaseIterable, Codable, Identifiable {
     }
 
     /// Theme colour for each skill
-    var colorName: String {
+    var color: Color {
         switch self {
-        case .serving:  return "blue"
-        case .passing:  return "green"
-        case .setting:  return "purple"
-        case .hitting:  return "red"
-        case .defense:  return "orange"
-        case .blocking: return "indigo"
+        case .warmup:   return .pink
+        case .serving:  return .blue
+        case .passing:  return .green
+        case .setting:  return .purple
+        case .hitting:  return .red
+        case .defense:  return .orange
+        case .blocking: return .indigo
         }
     }
 }

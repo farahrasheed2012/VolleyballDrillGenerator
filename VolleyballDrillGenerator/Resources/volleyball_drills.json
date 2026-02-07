@@ -538,5 +538,149 @@
     "equipment": ["Volleyballs", "Net"],
     "source": "https://cdnsm5-hosted.civiclive.com/UserFiles/Servers/Server_1881137/File/Things%20to%20Do/Recreation/Youth%20Sports/Volleyball/Volleyball%20Practice%20Plan.pdf",
     "image": ""
+  },
+  {
+    "name": "High Knees",
+    "skill": "Warmup",
+    "level": "New to Volleyball",
+    "description": "1. Stand tall with feet hip-width apart.\n2. Drive one knee up to hip height, then quickly switch to the other.\n3. Pump your arms in rhythm — opposite arm to opposite knee.\n4. Stay on the balls of your feet.\n5. Go for 30 seconds, rest 10 seconds, repeat 3 times.\n6. Great for raising heart rate and activating hip flexors before practice.",
+    "equipment": ["None"],
+    "source": "https://theartofcoachingvolleyball.com/20-dynamic-volleyball-warmup-exercises-with-marie-zidek/",
+    "image": ""
+  },
+  {
+    "name": "Butt Kicks",
+    "skill": "Warmup",
+    "level": "New to Volleyball",
+    "description": "1. Jog in place or move forward slowly.\n2. On each step, kick your heel up toward your glutes.\n3. Keep your upper body upright and core engaged.\n4. Pump arms naturally as you would when running.\n5. Go for 30 seconds, rest 10 seconds, repeat 3 times.\n6. Warms up quadriceps and hamstrings for explosive court movements.",
+    "equipment": ["None"],
+    "source": "https://theartofcoachingvolleyball.com/20-dynamic-volleyball-warmup-exercises-with-marie-zidek/",
+    "image": ""
+  },
+  {
+    "name": "Arm Circles",
+    "skill": "Warmup",
+    "level": "New to Volleyball",
+    "description": "1. Stand with feet shoulder-width apart, arms extended out to the sides.\n2. Make small forward circles for 15 seconds.\n3. Gradually increase to large forward circles for 15 seconds.\n4. Reverse direction — small backward circles for 15 seconds, then large.\n5. Finish with 10 big windmill circles (full range of motion).\n6. Essential for warming up shoulders before serving, hitting, and setting.",
+    "equipment": ["None"],
+    "source": "https://wallvolleyball.com/warm-up-drills-for-volleyball/",
+    "image": ""
+  },
+  {
+    "name": "Leg Swings",
+    "skill": "Warmup",
+    "level": "New to Volleyball",
+    "description": "1. Stand next to a wall or partner for balance.\n2. Swing one leg forward and backward in a controlled motion, 15 times.\n3. Then swing the same leg side to side across your body, 15 times.\n4. Switch to the other leg and repeat both directions.\n5. Keep your core tight and stand tall throughout.\n6. Opens up hips and prepares legs for lateral shuffles and jumping.",
+    "equipment": ["None"],
+    "source": "https://theartofcoachingvolleyball.com/20-dynamic-volleyball-warmup-exercises-with-marie-zidek/",
+    "image": ""
+  },
+  {
+    "name": "Side Shuffles",
+    "skill": "Warmup",
+    "level": "New to Volleyball",
+    "description": "1. Start in athletic stance: knees bent, weight on balls of feet.\n2. Shuffle laterally to the right for 15 feet, staying low.\n3. Touch the line, then shuffle back to the left.\n4. Keep feet wide — never let them cross or come together.\n5. Do 5 round trips.\n6. Mirrors the defensive movement pattern used throughout volleyball.",
+    "equipment": ["None"],
+    "source": "https://wallvolleyball.com/warm-up-drills-for-volleyball/",
+    "image": ""
+  },
+  {
+    "name": "Carioca (Grapevine)",
+    "skill": "Warmup",
+    "level": "Beginner/Developing",
+    "description": "1. Start in athletic stance facing sideways.\n2. Step your trailing foot in front, then lead foot steps out.\n3. Step trailing foot behind, then lead foot steps out.\n4. Alternate front-behind as you move laterally.\n5. Use hip rotation and arm swing for rhythm.\n6. Go 15 feet, switch directions. Do 4 round trips. Builds hip mobility and coordination.",
+    "equipment": ["None"],
+    "source": "https://theartofcoachingvolleyball.com/20-dynamic-volleyball-warmup-exercises-with-marie-zidek/",
+    "image": ""
+  },
+  {
+    "name": "Walking Lunges with Twist",
+    "skill": "Warmup",
+    "level": "Beginner/Developing",
+    "description": "1. Step forward into a deep lunge (front knee at 90 degrees).\n2. At the bottom of the lunge, rotate your upper body toward the front knee.\n3. Hold the twist for 1 second, then step forward into the next lunge.\n4. Alternate legs as you move across the court.\n5. Do 10 lunges per leg (20 total steps).\n6. Activates glutes, quads, and core rotation used in hitting and serving.",
+    "equipment": ["None"],
+    "source": "https://theartofcoachingvolleyball.com/20-dynamic-volleyball-warmup-exercises-with-marie-zidek/",
+    "image": ""
+  },
+  {
+    "name": "Partner Ball Throw Warmup",
+    "skill": "Warmup",
+    "level": "New to Volleyball",
+    "description": "1. Pair up with a partner, 10-15 feet apart, each with a volleyball.\n2. Throw the ball back and forth using two-hand overhead throws.\n3. After 10 reps, switch to one-hand throws (mimicking serving motion).\n4. Then do 10 underhand tosses focusing on accuracy.\n5. Finish with 10 bounce-catch throws to work on reaction.\n6. Activates shoulders and gets players comfortable handling the ball.",
+    "equipment": ["Volleyball"],
+    "source": "https://www.volleyball1on1.com/volleyball-drills/warm-up-drills/",
+    "image": ""
+  },
+  {
+    "name": "Setting Warmup",
+    "skill": "Warmup",
+    "level": "Beginner/Developing",
+    "description": "1. Each player gets a ball.\n2. Set the ball to yourself continuously, staying in one spot — 20 reps.\n3. Then walk forward while setting to yourself — across the court.\n4. Walk backward while setting — return to start.\n5. Partner up: face-to-face setting, 20 controlled sets each.\n6. Finish with 10 quick sets each. Gradually increases intensity for setting muscles.",
+    "equipment": ["Volleyball"],
+    "source": "https://www.volleyball1on1.com/volleyball-drills/warm-up-drills/",
+    "image": ""
+  },
+  {
+    "name": "Pepper Warmup",
+    "skill": "Warmup",
+    "level": "Beginner/Developing",
+    "description": "1. Pair up with a partner about 10 feet apart.\n2. Start at half speed: bump-set-hit, bump-set-hit sequence.\n3. Focus on clean contacts — control over power.\n4. After 2 minutes, increase to three-quarter speed.\n5. After another 2 minutes, go full speed.\n6. Classic warmup that touches all three core contacts before practice begins.",
+    "equipment": ["Volleyball"],
+    "source": "https://www.volleyball1on1.com/volleyball-drills/warm-up-drills/",
+    "image": ""
+  },
+  {
+    "name": "Inchworms",
+    "skill": "Warmup",
+    "level": "Beginner/Developing",
+    "description": "1. Stand tall with feet together.\n2. Bend at the waist and place hands on the floor in front of you.\n3. Walk your hands forward into a plank/push-up position.\n4. Hold the plank for 2 seconds.\n5. Walk your feet up toward your hands, keeping legs as straight as possible.\n6. Stand up and repeat across the court. Stretches hamstrings and activates core and shoulders.",
+    "equipment": ["None"],
+    "source": "https://theartofcoachingvolleyball.com/20-dynamic-volleyball-warmup-exercises-with-marie-zidek/",
+    "image": ""
+  },
+  {
+    "name": "Lateral Band Walks",
+    "skill": "Warmup",
+    "level": "Intermediate",
+    "description": "1. Place a resistance band around both ankles (or just above knees).\n2. Get into a half-squat athletic stance.\n3. Step sideways, leading with one foot, keeping tension on the band.\n4. Take 15 steps to the right, then 15 steps back to the left.\n5. Stay low the entire time — don't bounce up.\n6. Fires up glutes and hip stabilizers critical for lateral court movement.",
+    "equipment": ["Resistance band"],
+    "source": "https://theartofcoachingvolleyball.com/20-dynamic-volleyball-warmup-exercises-with-marie-zidek/",
+    "image": ""
+  },
+  {
+    "name": "A-Skip and B-Skip",
+    "skill": "Warmup",
+    "level": "Intermediate",
+    "description": "1. A-Skip: skip forward driving one knee up to hip height on each skip.\n2. Pump opposite arm up with each knee drive.\n3. Go across the court and back (about 30 feet each way).\n4. B-Skip: same motion but extend the leg forward at the top before pulling it down.\n5. Emphasize quick ground contact and tall posture.\n6. Activates hip flexors, calves, and coordination for explosive jumping.",
+    "equipment": ["None"],
+    "source": "https://theartofcoachingvolleyball.com/20-dynamic-volleyball-warmup-exercises-with-marie-zidek/",
+    "image": ""
+  },
+  {
+    "name": "Volleyball Jog and Pass",
+    "skill": "Warmup",
+    "level": "Intermediate",
+    "description": "1. Players jog in pairs around the court perimeter.\n2. While jogging, bump-pass a volleyball back and forth between partners.\n3. Maintain controlled passes while on the move — don't stop jogging.\n4. After 2 laps, switch to overhead sets while jogging.\n5. After 2 more laps, alternate between bumps and sets each contact.\n6. Combines cardio warmup with ball-handling to save time.",
+    "equipment": ["Volleyball"],
+    "source": "https://www.volleyball1on1.com/volleyball-drills/warm-up-drills/",
+    "image": ""
+  },
+  {
+    "name": "Serve Receive Warmup",
+    "skill": "Warmup",
+    "level": "Intermediate",
+    "description": "1. One player serves easy balls from the service line.\n2. Three receivers spread out in a W formation on the other side.\n3. Start at half speed — serve underhand with placement.\n4. Receivers pass to a target player at the net.\n5. After 10 serves, increase to three-quarter speed overhand serves.\n6. Finish with 10 full-speed serves. Gradually builds to game-like intensity.",
+    "equipment": ["Volleyballs", "Net"],
+    "source": "https://wallvolleyball.com/warm-up-drills-for-volleyball/",
+    "image": ""
+  },
+  {
+    "name": "Shoulder Band Warmup",
+    "skill": "Warmup",
+    "level": "Intermediate",
+    "description": "1. Hold a resistance band with both hands, shoulder-width apart.\n2. Pull the band apart with straight arms — 15 reps.\n3. Then hold the band overhead and pull apart — 15 reps.\n4. Internal rotation: elbow at 90°, rotate forearm inward against band — 15 per arm.\n5. External rotation: elbow at 90°, rotate forearm outward — 15 per arm.\n6. Prevents shoulder injuries from repetitive serving and hitting.",
+    "equipment": ["Resistance band"],
+    "source": "https://theartofcoachingvolleyball.com/20-dynamic-volleyball-warmup-exercises-with-marie-zidek/",
+    "image": ""
   }
 ]

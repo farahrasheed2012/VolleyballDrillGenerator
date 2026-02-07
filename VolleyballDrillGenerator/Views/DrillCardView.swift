@@ -38,7 +38,7 @@ struct DrillCardView: View {
                         .padding(.horizontal, 8)
                         .padding(.vertical, 4)
                         .foregroundColor(.white)
-                        .background(skillColor(cat), in: Capsule())
+                        .background(cat.color, in: Capsule())
                 }
             }
 
@@ -67,14 +67,5 @@ struct DrillCardView: View {
         .shadow(color: Color.black.opacity(0.08), radius: 6, y: 3)
     }
 
-    private func skillColor(_ cat: SkillCategory) -> Color {
-        switch cat {
-        case .serving:  return .blue
-        case .passing:  return .green
-        case .setting:  return .purple
-        case .hitting:  return .red
-        case .defense:  return .orange
-        case .blocking: return .indigo
-        }
-    }
+    // Skill color now comes from SkillCategory.color
 }

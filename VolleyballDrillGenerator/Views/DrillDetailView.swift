@@ -24,7 +24,7 @@ struct DrillDetailView: View {
                         .foregroundColor(.white)
                         .padding(.horizontal, 12)
                         .padding(.vertical, 6)
-                        .background(skillColor(cat), in: Capsule())
+                        .background(cat.color, in: Capsule())
                     }
 
                     if let lvl = drill.playerLevel {
@@ -116,14 +116,5 @@ struct DrillDetailView: View {
         .navigationBarTitleDisplayMode(.large)
     }
 
-    private func skillColor(_ cat: SkillCategory) -> Color {
-        switch cat {
-        case .serving:  return .blue
-        case .passing:  return .green
-        case .setting:  return .purple
-        case .hitting:  return .red
-        case .defense:  return .orange
-        case .blocking: return .indigo
-        }
-    }
+    // Skill color now comes from SkillCategory.color
 }
