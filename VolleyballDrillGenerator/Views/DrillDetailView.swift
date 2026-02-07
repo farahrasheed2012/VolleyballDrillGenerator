@@ -1,0 +1,114 @@
+import SwiftUI
+
+// MARK: - Drill Detail View
+
+/// Full-screen detail for a single drill: description, equipment, source link,
+/// and an "Add to Practice Plan" button.
+struct DrillDetailView: View {
+    @EnvironmentObject var store: DrillStore
+    let drill: Drill
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+
+                // Skill badge
+                if let cat = drill.skillCategory {
+                    HStack {
+                        Image(systemName: cat.icon)
+                        Text(cat.rawValue)
+                            .fontWeight(.semibold)
+                    }
+                    .font(.subheadline)
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(skillColor(cat), in: Capsule())
+                }
+
+                // Description
+                Text("Instructions")
+                    .font(.title3.bold())
+
+                Text(drill.description)
+                    .font(.body)
+                    .lineSpacing(4)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                Divider()
+
+                // Equipment
+                Text("Equipment")
+                    .font(.title3.bold())
+
+                ForEach(drill.equipment, id: \.self) { item in
+                    HStack(spacing: 8) {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.green)
+                        Text(item)
+                    }
+                    .font(.body)
+                }
+
+                Divider()
+
+                // Source link
+                if let url = URL(string: drill.source), !drill.source.isEmpty {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Source")
+                            .font(.title3.bold())
+                        Link(destination: url) {
+                            HStack {
+                                Image(systemName: "link")
+                                Text("View Original Source")
+                            }
+                            .font(.subheadline)
+                        }
+                    }
+                }
+
+                Divider()
+
+                // Add / Remove from Practice Plan
+                Button {
+                    store.toggleInPlan(drill)
+                } label: {
+                    HStack {
+                        Image(systemName: store.isInPlan(drill)
+                              ? "minus.circle.fill"
+                              : "plus.circle.fill")
+                        Text(store.isInPlan(drill)
+                             ? "Remove from Practice Plan"
+                             : "Add to Practice Plan")
+                    }
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 14)
+                    .background(store.isInPlan(drill) ? Color.red : Color.orange,
+                                in: RoundedRectangle(cornerRadius: 14))
+                }
+
+                if store.practicePlan.count >= 5 && !store.isInPlan(drill) {
+                    Text("Practice plan is full (max 5 drills). Remove one first.")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+            }
+            .padding()
+        }
+        .navigationTitle(drill.name)
+        .navigationBarTitleDisplayMode(.large)
+    }
+
+    private func skillColor(_ cat: SkillCategory) -> Color {
+        switch cat {
+        case .serving:  return .blue
+        case .passing:  return .green
+        case .setting:  return .purple
+        case .hitting:  return .red
+        case .defense:  return .orange
+        case .blocking: return .indigo
+        }
+    }
+}

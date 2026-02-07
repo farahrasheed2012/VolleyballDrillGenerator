@@ -1,0 +1,250 @@
+[
+  {
+    "name": "Wall Serving",
+    "skill": "Serving",
+    "description": "1. Stand 10-15 feet from a wall.\n2. Practice your underhand or overhand serve into the wall.\n3. Focus on contacting the ball with a flat hand and following through.\n4. Catch the rebound and repeat.\n5. Do 3 sets of 10 serves, alternating between underhand and overhand.",
+    "equipment": ["Volleyball", "Wall"],
+    "source": "https://usavolleyball.org/resources-for-coaches/lesson-plans",
+    "image": ""
+  },
+  {
+    "name": "Target Serving",
+    "skill": "Serving",
+    "description": "1. Place cones or towels in different zones on the opposite court.\n2. Serve from behind the end line aiming at a specific target.\n3. Score points for hitting each zone (center = 1 pt, corners = 3 pts).\n4. Each player gets 10 serves per round.\n5. Rotate targets after each round to work on accuracy and placement.",
+    "equipment": ["Volleyball", "Net", "Cones or towels"],
+    "source": "https://usavolleyball.org/resource/top-166-drills-from-around-the-world/",
+    "image": ""
+  },
+  {
+    "name": "Serving Relay Race",
+    "skill": "Serving",
+    "description": "1. Split into two teams lined up behind the end line.\n2. First player serves over the net.\n3. If the serve goes over and lands in, they run to the back of the line.\n4. If they miss, they must serve again until successful.\n5. First team to have all players complete a good serve wins.",
+    "equipment": ["Volleyballs (one per team)", "Net"],
+    "source": "https://usavolleyball.org/resources-for-coaches/coaches-tools",
+    "image": ""
+  },
+  {
+    "name": "Serving Zones",
+    "skill": "Serving",
+    "description": "1. Divide the opposite court into 6 zones (1-6).\n2. Coach calls out a zone number.\n3. Player must serve into that zone.\n4. Successful serves earn a point; track individual scores.\n5. Play 3 rounds of 6 serves each.\n6. Emphasize consistent toss and follow-through.",
+    "equipment": ["Volleyball", "Net", "Floor tape or cones"],
+    "source": "https://usavolleyball.org/resource/top-166-drills-from-around-the-world/",
+    "image": ""
+  },
+  {
+    "name": "Progressive Serving",
+    "skill": "Serving",
+    "description": "1. Start serving from the 10-foot line.\n2. After 3 successful serves in a row, take two steps back.\n3. Continue moving back toward the end line with each set of 3.\n4. If you miss, stay at that distance and try again.\n5. Goal: successfully serve from behind the end line.\n6. Great for building confidence in younger players.",
+    "equipment": ["Volleyball", "Net"],
+    "source": "https://www.volleyball1on1.com/volleyball1on1-volleyball-drills-library/",
+    "image": ""
+  },
+  {
+    "name": "Serve & Chase",
+    "skill": "Serving",
+    "description": "1. Player serves over the net.\n2. Immediately sprint under the net to the other side.\n3. Field your own serve with a pass to a target.\n4. Jog back and repeat.\n5. Builds serving accuracy plus transition footwork.\n6. Do 8-10 reps per player.",
+    "equipment": ["Volleyball", "Net"],
+    "source": "https://usavolleyball.org/resources-for-coaches/lesson-plans",
+    "image": ""
+  },
+  {
+    "name": "Pepper",
+    "skill": "Passing/Bumping",
+    "description": "1. Pair up with a partner about 10 feet apart.\n2. Player A hits (downball) to Player B.\n3. Player B passes (bumps) back to Player A.\n4. Player A sets to Player B.\n5. Player B hits back to Player A.\n6. Repeat the sequence: hit-pass-set-hit.\n7. Focus on controlled contacts and proper platform angle.",
+    "equipment": ["Volleyball"],
+    "source": "https://usavolleyball.org/resource/top-166-drills-from-around-the-world/",
+    "image": ""
+  },
+  {
+    "name": "Partner Passing",
+    "skill": "Passing/Bumping",
+    "description": "1. Two players face each other about 15 feet apart.\n2. One player tosses or serves the ball.\n3. Receiving player passes it back using a forearm bump.\n4. Focus on: feet shoulder-width, knees bent, arms together, angle the platform.\n5. Do 20 passes then switch roles.\n6. Count consecutive good passes as a team challenge.",
+    "equipment": ["Volleyball"],
+    "source": "https://usavolleyball.org/resources-for-coaches/lesson-plans",
+    "image": ""
+  },
+  {
+    "name": "Passing Triangle",
+    "skill": "Passing/Bumping",
+    "description": "1. Three players form a triangle about 12 feet apart.\n2. Ball is passed (bumped) around the triangle in order.\n3. After each pass, the passer shuffles one position clockwise.\n4. Maintain a controlled, arcing pass.\n5. Challenge: keep the ball going for 30 consecutive passes.\n6. Rotate direction after each set.",
+    "equipment": ["Volleyball"],
+    "source": "https://usavolleyball.org/resources-for-coaches/coaches-tools",
+    "image": ""
+  },
+  {
+    "name": "Shuttle Passing",
+    "skill": "Passing/Bumping",
+    "description": "1. Two lines face each other across the net (or 15 feet apart).\n2. Front player in Line A tosses the ball to front player in Line B.\n3. Line B player passes it back, then runs to the back of Line A.\n4. Line A catches and tosses to the next Line B player.\n5. Continue rotating through for 5 minutes.\n6. Focus on moving feet to the ball before passing.",
+    "equipment": ["Volleyball", "Net (optional)"],
+    "source": "https://www.volleyball1on1.com/volleyball1on1-volleyball-drills-library/",
+    "image": ""
+  },
+  {
+    "name": "Queen/King of the Court Passing",
+    "skill": "Passing/Bumping",
+    "description": "1. Teams of 2 on each side of the net.\n2. Coach initiates play with a toss or serve.\n3. Receiving team must pass, set, and send the ball over.\n4. Winning team stays and rotates to the 'King' side.\n5. Losing team goes to the end of the challenger line.\n6. First team to win 5 rallies on the King side wins.",
+    "equipment": ["Volleyball", "Net"],
+    "source": "https://usavolleyball.org/resource/top-166-drills-from-around-the-world/",
+    "image": ""
+  },
+  {
+    "name": "Setting to the Wall",
+    "skill": "Setting",
+    "description": "1. Stand 3 feet from a wall.\n2. Set the ball against the wall continuously.\n3. Use proper hand shape: fingers spread, thumbs and forefingers forming a triangle.\n4. Push through with legs and wrists.\n5. Do 3 sets of 30 wall sets.\n6. Step back to 5 feet for the next round to work on power.",
+    "equipment": ["Volleyball", "Wall"],
+    "source": "https://usavolleyball.org/resources-for-coaches/lesson-plans",
+    "image": ""
+  },
+  {
+    "name": "Setting to Self",
+    "skill": "Setting",
+    "description": "1. Stand in athletic position with knees slightly bent.\n2. Set the ball straight up above your forehead.\n3. Catch it in the proper setting position, then set again.\n4. Progress to continuous sets without catching.\n5. Goal: 50 consecutive self-sets without losing control.\n6. Keep the ball spinning backward with proper wrist action.",
+    "equipment": ["Volleyball"],
+    "source": "https://usavolleyball.org/resources-for-coaches/coaches-tools",
+    "image": ""
+  },
+  {
+    "name": "Partner Setting",
+    "skill": "Setting",
+    "description": "1. Two players face each other 10-12 feet apart.\n2. Player A tosses high to Player B.\n3. Player B sets it back to Player A's hands.\n4. Focus on clean hand contact, pushing evenly with both hands.\n5. After 20 good sets, switch roles.\n6. Progress by increasing distance to 20 feet.",
+    "equipment": ["Volleyball"],
+    "source": "https://usavolleyball.org/resource/top-166-drills-from-around-the-world/",
+    "image": ""
+  },
+  {
+    "name": "Setting Target Practice",
+    "skill": "Setting",
+    "description": "1. Set up a hula hoop or cone at the left and right antenna positions.\n2. Player receives a toss from a coach near the net.\n3. Set the ball to land in the target area.\n4. Alternate between setting to the left and right pins.\n5. Score: 2 points for hoop, 1 point for within 3 feet.\n6. First to 20 points wins.",
+    "equipment": ["Volleyball", "Hula hoops or cones", "Net"],
+    "source": "https://www.volleyball1on1.com/volleyball1on1-volleyball-drills-library/",
+    "image": ""
+  },
+  {
+    "name": "Setting Footwork Drill",
+    "skill": "Setting",
+    "description": "1. Setter starts at the net in position 2/3.\n2. Coach tosses the ball to different spots along the net.\n3. Setter must shuffle to the ball, square up, and set to the outside.\n4. After setting, shuffle back to starting position.\n5. Repeat 10 times to the left, 10 times to the right.\n6. Emphasize arriving before the ball and being balanced.",
+    "equipment": ["Volleyball", "Net"],
+    "source": "https://usavolleyball.org/wp-content/uploads/2020/12/CAP-II-Coaches-Favorite-Drill-Form-Oates.pdf",
+    "image": ""
+  },
+  {
+    "name": "Approach and Hit",
+    "skill": "Hitting/Spiking",
+    "description": "1. Start behind the 10-foot line on the left side.\n2. Practice the 3-step approach: left-right-left (for right-handers).\n3. On the last two steps, plant and jump.\n4. Coach or partner tosses a high ball near the net.\n5. Swing and contact the ball at the highest point.\n6. Land on both feet. Repeat 10 times each side.",
+    "equipment": ["Volleyball", "Net"],
+    "source": "https://usavolleyball.org/resources-for-coaches/lesson-plans",
+    "image": ""
+  },
+  {
+    "name": "Hitting Lines",
+    "skill": "Hitting/Spiking",
+    "description": "1. Form a hitting line behind the 10-foot line on the left pin.\n2. Setter at the net receives a pass from a tosser.\n3. Setter delivers a high outside set.\n4. Hitter approaches, jumps, and hits cross-court or down the line.\n5. Shagger retrieves the ball.\n6. Rotate through 10 hits per player. Switch to right side.",
+    "equipment": ["Volleyballs (multiple)", "Net"],
+    "source": "https://usavolleyball.org/resource/top-166-drills-from-around-the-world/",
+    "image": ""
+  },
+  {
+    "name": "Toss-Hit-Catch",
+    "skill": "Hitting/Spiking",
+    "description": "1. Pair up. One player at the net, one at the 10-foot line.\n2. Net player tosses high to the approaching hitter.\n3. Hitter uses full approach and spikes.\n4. Focus on arm swing: elbow high, snap the wrist, follow through.\n5. After 10 hits, switch roles.\n6. Great for beginners learning timing.",
+    "equipment": ["Volleyball", "Net"],
+    "source": "https://usavolleyball.org/resources-for-coaches/coaches-tools",
+    "image": ""
+  },
+  {
+    "name": "Target Hitting",
+    "skill": "Hitting/Spiking",
+    "description": "1. Place cones or towels in zones on the opposite court.\n2. Setter sets from position 2/3.\n3. Hitter approaches and aims at a specific target zone.\n4. Score points based on accuracy (zone 1=1pt, zone 5=3pts, etc.).\n5. Each hitter gets 8 attempts.\n6. Track scores and declare a winner.",
+    "equipment": ["Volleyball", "Net", "Cones or towels"],
+    "source": "https://www.volleyball1on1.com/volleyball1on1-volleyball-drills-library/",
+    "image": ""
+  },
+  {
+    "name": "Standing Spike Drill",
+    "skill": "Hitting/Spiking",
+    "description": "1. Player stands on a box or platform at the net.\n2. Coach holds or tosses the ball just above net height.\n3. Player practices arm swing and wrist snap from a standing position.\n4. Focus on hand on top of the ball, snapping down.\n5. Do 15 reps, then step off the box and practice with a jump.\n6. Builds proper contact point without worrying about timing.",
+    "equipment": ["Volleyball", "Net", "Box or platform"],
+    "source": "https://usavolleyball.org/wp-content/uploads/2020/12/CAP-II-Coaches-Favorite-Drill-Form-Oates.pdf",
+    "image": ""
+  },
+  {
+    "name": "Defensive Shuffle Drill",
+    "skill": "Defense/Digging",
+    "description": "1. Player starts in defensive position at the back row.\n2. Coach stands at the net and hits or tosses balls to the left and right.\n3. Player shuffles laterally and digs each ball up to a target.\n4. Reset to center after each dig.\n5. Do 3 sets of 10 digs.\n6. Focus on staying low, reading the hitter, and platform control.",
+    "equipment": ["Volleyball", "Net"],
+    "source": "https://usavolleyball.org/resources-for-coaches/lesson-plans",
+    "image": ""
+  },
+  {
+    "name": "Dig and Roll",
+    "skill": "Defense/Digging",
+    "description": "1. Player starts in ready position in the back court.\n2. Coach tips or hits a ball just out of comfortable reach.\n3. Player extends to dig the ball up, then performs a controlled roll.\n4. Get up quickly and return to ready position.\n5. Repeat 10 times to each side.\n6. Teaches players to safely extend their range.",
+    "equipment": ["Volleyball", "Net"],
+    "source": "https://usavolleyball.org/resource/top-166-drills-from-around-the-world/",
+    "image": ""
+  },
+  {
+    "name": "Rapid Fire Defense",
+    "skill": "Defense/Digging",
+    "description": "1. One player in the back row in defensive stance.\n2. Three coaches/players at the net with volleyballs.\n3. They take turns hitting or tipping balls at the defender.\n4. Defender must dig each ball up as quickly as possible.\n5. Go for 30 seconds, then switch defenders.\n6. Builds reaction time and reading multiple attackers.",
+    "equipment": ["Volleyballs (3-5)", "Net"],
+    "source": "https://usavolleyball.org/resources-for-coaches/coaches-tools",
+    "image": ""
+  },
+  {
+    "name": "Pancake Drill",
+    "skill": "Defense/Digging",
+    "description": "1. Players partner up. One lies on their stomach.\n2. Coach yells 'Go!' — player jumps up to ready position.\n3. Partner immediately tosses a low ball.\n4. Player dives forward and uses a pancake (flat hand on floor) to save it.\n5. Alternate after 5 reps.\n6. Teaches the emergency pancake dig technique.",
+    "equipment": ["Volleyball"],
+    "source": "https://www.volleyball1on1.com/volleyball1on1-volleyball-drills-library/",
+    "image": ""
+  },
+  {
+    "name": "Down Ball Defense",
+    "skill": "Defense/Digging",
+    "description": "1. Three back-row defenders in positions 1, 5, and 6.\n2. Coach or player at the net hits controlled down balls.\n3. Defenders read the hit and pass (dig) to the setter target.\n4. Setter catches and returns the ball to the coach.\n5. Rotate positions after every 5 balls.\n6. Emphasize reading the attacker's shoulder and arm angle.",
+    "equipment": ["Volleyballs (multiple)", "Net"],
+    "source": "https://usavolleyball.org/resource/top-166-drills-from-around-the-world/",
+    "image": ""
+  },
+  {
+    "name": "Mirror Blocking",
+    "skill": "Blocking",
+    "description": "1. Two players face each other on opposite sides of the net.\n2. One is the attacker (slides left and right along the net).\n3. The blocker mirrors the attacker's movement using shuffle steps.\n4. When the attacker raises their arms to 'hit', the blocker jumps and presses hands over.\n5. Do 10 reps then switch roles.\n6. Builds lateral movement and timing at the net.",
+    "equipment": ["Net"],
+    "source": "https://usavolleyball.org/resources-for-coaches/lesson-plans",
+    "image": ""
+  },
+  {
+    "name": "Block and Transition",
+    "skill": "Blocking",
+    "description": "1. Blocker starts at the net in blocking position.\n2. Coach on the opposite side tosses the ball up and hits.\n3. Blocker jumps and blocks, then immediately drops off the net.\n4. After landing, blocker transitions to hit an approach on a set from a teammate.\n5. Repeat 8 times per player.\n6. Teaches the block-to-attack transition movement.",
+    "equipment": ["Volleyball", "Net"],
+    "source": "https://usavolleyball.org/resource/top-166-drills-from-around-the-world/",
+    "image": ""
+  },
+  {
+    "name": "Footwork Blocking Drill",
+    "skill": "Blocking",
+    "description": "1. Blocker starts at the middle of the net.\n2. Coach calls 'Left!' or 'Right!'\n3. Blocker uses crossover-step and shuffle to reach the pin.\n4. Jump and press hands over the net with proper form.\n5. Land and shuffle back to center.\n6. Repeat 5 times each direction. Focus on: quick feet, hands above net, seal the net.",
+    "equipment": ["Net"],
+    "source": "https://usavolleyball.org/resources-for-coaches/coaches-tools",
+    "image": ""
+  },
+  {
+    "name": "Solo Block Jumps",
+    "skill": "Blocking",
+    "description": "1. Stand at the net in athletic position, hands at shoulder height.\n2. Jump straight up, pressing both hands above the net.\n3. Fingers spread wide, wrists firm, push hands toward the opposite court.\n4. Land softly on both feet and immediately jump again.\n5. Do 3 sets of 10 jumps.\n6. Builds blocking endurance and proper hand positioning.",
+    "equipment": ["Net"],
+    "source": "https://www.volleyball1on1.com/volleyball1on1-volleyball-drills-library/",
+    "image": ""
+  },
+  {
+    "name": "Double Block Drill",
+    "skill": "Blocking",
+    "description": "1. Two blockers start at the net — one middle, one outside.\n2. Coach or hitter approaches from the opposite side.\n3. Middle blocker closes to the outside blocker to form a double block.\n4. Both jump together, pressing hands and sealing the gap between them.\n5. Repeat from the other side.\n6. Do 8 reps each side. Emphasize communication ('Here! Here!') and timing.",
+    "equipment": ["Volleyball", "Net"],
+    "source": "https://usavolleyball.org/wp-content/uploads/2020/12/CAP-II-Coaches-Favorite-Drill-Form-Oates.pdf",
+    "image": ""
+  }
+]
