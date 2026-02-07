@@ -2,11 +2,12 @@ import SwiftUI
 
 // MARK: - Generator View
 
-/// Main generator screen: skill picker, generate button, random drill display,
-/// and a "Drill of the Day" card at the top.
+/// Main generator screen: level picker, skill picker, generate button,
+/// random drill display, and a "Drill of the Day" card at the top.
 struct GeneratorView: View {
     @EnvironmentObject var store: DrillStore
     @State private var selectedSkill: SkillCategory = .serving
+    @State private var selectedLevel: PlayerLevel = .newToVolleyball
     @State private var generatedDrill: Drill?
     @State private var animateDrill = false
 
@@ -32,6 +33,23 @@ struct GeneratorView: View {
 
                     Divider().padding(.horizontal)
 
+                    // MARK: Player Level Picker
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Player Level")
+                            .font(.headline)
+                            .padding(.horizontal)
+
+                        HStack(spacing: 10) {
+                            ForEach(PlayerLevel.allCases) { level in
+                                LevelChip(level: level,
+                                          isSelected: selectedLevel == level) {
+                                    withAnimation { selectedLevel = level }
+                                }
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
+
                     // MARK: Skill Picker
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Select a Skill")
@@ -51,10 +69,17 @@ struct GeneratorView: View {
                         }
                     }
 
+                    // Drill count for current filters
+                    let matchCount = store.drills(for: selectedSkill, level: selectedLevel).count
+                    Text("\(matchCount) drill\(matchCount == 1 ? "" : "s") available")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+
                     // MARK: Generate Button
                     Button {
                         withAnimation(.spring()) {
-                            generatedDrill = store.randomDrill(for: selectedSkill)
+                            generatedDrill = store.randomDrill(for: selectedSkill,
+                                                               level: selectedLevel)
                             animateDrill = true
                         }
                         // Reset animation flag
@@ -92,6 +117,31 @@ struct GeneratorView: View {
                 .padding(.top)
             }
             .navigationTitle("Volleyball Drill Generator")
+        }
+    }
+}
+
+// MARK: - Level Chip
+
+/// A selectable chip for each player level
+struct LevelChip: View {
+    let level: PlayerLevel
+    let isSelected: Bool
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 5) {
+                Image(systemName: level.icon)
+                    .font(.caption)
+                Text(level.shortLabel)
+                    .font(.subheadline.bold())
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 10)
+            .foregroundColor(isSelected ? .white : .primary)
+            .background(isSelected ? level.color : Color(.systemGray5),
+                        in: Capsule())
         }
     }
 }

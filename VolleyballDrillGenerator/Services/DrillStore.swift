@@ -47,9 +47,19 @@ class DrillStore: ObservableObject {
         allDrills.filter { $0.skill == skill.rawValue }
     }
 
+    /// Return all drills matching both a skill and a player level
+    func drills(for skill: SkillCategory, level: PlayerLevel) -> [Drill] {
+        allDrills.filter { $0.skill == skill.rawValue && $0.level == level.rawValue }
+    }
+
     /// Return a random drill for the given skill
     func randomDrill(for skill: SkillCategory) -> Drill? {
         drills(for: skill).randomElement()
+    }
+
+    /// Return a random drill for the given skill AND player level
+    func randomDrill(for skill: SkillCategory, level: PlayerLevel) -> Drill? {
+        drills(for: skill, level: level).randomElement()
     }
 
     // MARK: - Drill of the Day

@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 
 // MARK: - Skill Category
 
@@ -38,6 +38,44 @@ enum SkillCategory: String, CaseIterable, Codable, Identifiable {
     }
 }
 
+// MARK: - Player Level
+
+/// Three experience tiers for middle school players
+enum PlayerLevel: String, CaseIterable, Codable, Identifiable {
+    case newToVolleyball = "New to Volleyball"
+    case beginner = "Beginner/Developing"
+    case intermediate = "Intermediate"
+
+    var id: String { rawValue }
+
+    /// SF Symbol icon for each level
+    var icon: String {
+        switch self {
+        case .newToVolleyball: return "star"
+        case .beginner:       return "star.leadinghalf.filled"
+        case .intermediate:   return "star.fill"
+        }
+    }
+
+    /// Theme colour for each level
+    var color: Color {
+        switch self {
+        case .newToVolleyball: return .green
+        case .beginner:       return .blue
+        case .intermediate:   return .purple
+        }
+    }
+
+    /// Short label for badges
+    var shortLabel: String {
+        switch self {
+        case .newToVolleyball: return "New"
+        case .beginner:       return "Beginner"
+        case .intermediate:   return "Intermediate"
+        }
+    }
+}
+
 // MARK: - Drill
 
 /// A single volleyball drill loaded from the JSON database
@@ -46,6 +84,7 @@ struct Drill: Codable, Identifiable, Equatable {
 
     let name: String
     let skill: String
+    let level: String
     let description: String
     let equipment: [String]
     let source: String
@@ -54,6 +93,11 @@ struct Drill: Codable, Identifiable, Equatable {
     /// Convenience to get the typed SkillCategory
     var skillCategory: SkillCategory? {
         SkillCategory(rawValue: skill)
+    }
+
+    /// Convenience to get the typed PlayerLevel
+    var playerLevel: PlayerLevel? {
+        PlayerLevel(rawValue: level)
     }
 
     static func == (lhs: Drill, rhs: Drill) -> Bool {

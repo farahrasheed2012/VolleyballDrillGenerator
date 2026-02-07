@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - Drill Detail View
 
-/// Full-screen detail for a single drill: description, equipment, source link,
+/// Full-screen detail for a single drill: level, description, equipment, source link,
 /// and an "Add to Practice Plan" button.
 struct DrillDetailView: View {
     @EnvironmentObject var store: DrillStore
@@ -12,18 +12,33 @@ struct DrillDetailView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
 
-                // Skill badge
-                if let cat = drill.skillCategory {
-                    HStack {
-                        Image(systemName: cat.icon)
-                        Text(cat.rawValue)
-                            .fontWeight(.semibold)
+                // Skill + Level badges
+                HStack(spacing: 8) {
+                    if let cat = drill.skillCategory {
+                        HStack {
+                            Image(systemName: cat.icon)
+                            Text(cat.rawValue)
+                                .fontWeight(.semibold)
+                        }
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(skillColor(cat), in: Capsule())
                     }
-                    .font(.subheadline)
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(skillColor(cat), in: Capsule())
+
+                    if let lvl = drill.playerLevel {
+                        HStack(spacing: 4) {
+                            Image(systemName: lvl.icon)
+                            Text(lvl.rawValue)
+                                .fontWeight(.semibold)
+                        }
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(lvl.color, in: Capsule())
+                    }
                 }
 
                 // Description

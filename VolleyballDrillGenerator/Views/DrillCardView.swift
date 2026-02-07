@@ -2,13 +2,13 @@ import SwiftUI
 
 // MARK: - Drill Card View
 
-/// A compact card that summarises a drill: name, skill badge, and equipment.
+/// A compact card that summarises a drill: name, skill badge, level badge, and equipment.
 struct DrillCardView: View {
     let drill: Drill
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            // Name & skill badge
+            // Name & badges row
             HStack {
                 Text(drill.name)
                     .font(.headline)
@@ -17,6 +17,21 @@ struct DrillCardView: View {
 
                 Spacer()
 
+                // Level badge
+                if let lvl = drill.playerLevel {
+                    HStack(spacing: 3) {
+                        Image(systemName: lvl.icon)
+                            .font(.caption2)
+                        Text(lvl.shortLabel)
+                            .font(.caption2.bold())
+                    }
+                    .padding(.horizontal, 7)
+                    .padding(.vertical, 3)
+                    .foregroundColor(.white)
+                    .background(lvl.color, in: Capsule())
+                }
+
+                // Skill badge
                 if let cat = drill.skillCategory {
                     Text(cat.rawValue)
                         .font(.caption2.bold())

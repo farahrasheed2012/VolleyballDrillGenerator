@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA000001 /* VolleyballDrillGeneratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000001; };
-		AA000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000002; };
-		AA000003 /* GeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000003; };
-		AA000004 /* DrillCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000004; };
-		AA000005 /* DrillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000005; };
-		AA000006 /* DrillListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000006; };
-		AA000007 /* PracticePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000007; };
-		AA000008 /* DrillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000008; };
-		AA000009 /* DrillStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000009; };
-		AA000010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB000010; };
-		AA000011 /* volleyball_drills.json in Resources */ = {isa = PBXBuildFile; fileRef = AB000011; };
+		AA000001 /* VolleyballDrillGeneratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000001 /* VolleyballDrillGeneratorApp.swift */; };
+		AA000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000002 /* ContentView.swift */; };
+		AA000003 /* GeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000003 /* GeneratorView.swift */; };
+		AA000004 /* DrillCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000004 /* DrillCardView.swift */; };
+		AA000005 /* DrillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000005 /* DrillDetailView.swift */; };
+		AA000006 /* DrillListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000006 /* DrillListView.swift */; };
+		AA000007 /* PracticePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000007 /* PracticePlanView.swift */; };
+		AA000008 /* DrillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000008 /* DrillModel.swift */; };
+		AA000009 /* DrillStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000009 /* DrillStore.swift */; };
+		AA000010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB000010 /* Assets.xcassets */; };
+		AA000011 /* volleyball_drills.json in Resources */ = {isa = PBXBuildFile; fileRef = AB000011 /* volleyball_drills.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,7 +119,7 @@
 /* Begin PBXNativeTarget section */
 		AF000001 /* VolleyballDrillGenerator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B1000001;
+			buildConfigurationList = B1000001 /* Build configuration list for PBXNativeTarget "VolleyballDrillGenerator" */;
 			buildPhases = (
 				B2000001 /* Sources */,
 				AD000001 /* Frameworks */,
@@ -149,7 +149,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B1000002;
+			buildConfigurationList = B1000002 /* Build configuration list for PBXProject "VolleyballDrillGenerator" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -302,6 +302,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YTY564XJWX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VolleyballDrillGenerator/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Volleyball Drills";
@@ -330,6 +331,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YTY564XJWX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VolleyballDrillGenerator/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Volleyball Drills";
@@ -354,7 +356,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B1000001 /* Build configuration list for PBXNativeTarget */ = {
+		B1000001 /* Build configuration list for PBXNativeTarget "VolleyballDrillGenerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B5000001 /* Debug */,
@@ -363,7 +365,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B1000002 /* Build configuration list for PBXProject */ = {
+		B1000002 /* Build configuration list for PBXProject "VolleyballDrillGenerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B4000001 /* Debug */,
@@ -373,7 +375,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
 	};
 	rootObject = B0000001 /* Project object */;
 }
