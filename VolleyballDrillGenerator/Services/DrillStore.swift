@@ -15,10 +15,28 @@ class DrillStore: ObservableObject {
     // Current practice plan (selected drills, 3-5)
     @Published var practicePlan: [Drill] = []
 
+    // Optional 10-min warmup as first item in plan (level chosen by user)
+    @Published var practicePlanWarmupLevel: PlayerLevel?
+
+    // Favorite drill names (persisted)
+    @Published var favoriteDrillNames: Set<String> = []
+
+    // Recently viewed drill names, most recent last (max 10)
+    @Published var recentlyViewedDrillNames: [String] = []
+
+    private let planKey = "savedPracticePlan"
+    private let warmupPlanKey = "savedPracticePlanWarmup"
+    private let favoritesKey = "favoriteDrillNames"
+    private let recentlyViewedKey = "recentlyViewedDrillNames"
+    private let maxRecentCount = 10
+
     init() {
         loadDrills()
         pickDrillOfTheDay()
         loadPracticePlan()
+        loadWarmupPlan()
+        loadFavorites()
+        loadRecentlyViewed()
     }
 
     // MARK: - Loading
@@ -67,17 +85,18 @@ class DrillStore: ObservableObject {
     /// Pick one random drill per calendar day (stable for the day)
     private func pickDrillOfTheDay() {
         guard !allDrills.isEmpty else { return }
-
-        // Use the day-of-year as a stable seed so the drill
-        // stays the same throughout the day
         let dayOfYear = Calendar.current.ordinality(of: .day, in: .year, for: Date()) ?? 1
         let index = dayOfYear % allDrills.count
         drillOfTheDay = allDrills[index]
     }
 
-    // MARK: - Practice Plan Persistence
+    /// Pick a new random drill of the day (e.g. after pull-to-refresh)
+    func refreshDrillOfTheDay() {
+        guard !allDrills.isEmpty else { return }
+        drillOfTheDay = allDrills.randomElement()
+    }
 
-    private let planKey = "savedPracticePlan"
+    // MARK: - Practice Plan Persistence
 
     /// Save the current practice plan drill names to UserDefaults
     func savePracticePlan() {
@@ -90,6 +109,20 @@ class DrillStore: ObservableObject {
         guard let names = UserDefaults.standard.stringArray(forKey: planKey) else { return }
         practicePlan = names.compactMap { name in
             allDrills.first { $0.name == name }
+        }
+    }
+
+    private func loadWarmupPlan() {
+        guard let raw = UserDefaults.standard.string(forKey: warmupPlanKey),
+              let level = PlayerLevel(rawValue: raw) else { return }
+        practicePlanWarmupLevel = level
+    }
+
+    private func saveWarmupPlan() {
+        if let level = practicePlanWarmupLevel {
+            UserDefaults.standard.set(level.rawValue, forKey: warmupPlanKey)
+        } else {
+            UserDefaults.standard.removeObject(forKey: warmupPlanKey)
         }
     }
 
@@ -108,9 +141,97 @@ class DrillStore: ObservableObject {
         practicePlan.contains(drill)
     }
 
-    /// Remove all drills from the plan
+    /// Remove all drills from the plan (and warmup)
     func clearPlan() {
         practicePlan.removeAll()
+        practicePlanWarmupLevel = nil
         savePracticePlan()
+        saveWarmupPlan()
+    }
+
+    /// Set or clear warmup as first item in practice plan
+    func setWarmupInPlan(level: PlayerLevel?) {
+        practicePlanWarmupLevel = level
+        saveWarmupPlan()
+    }
+
+    /// Estimated total minutes for current plan (warmup + ~7 min per drill)
+    var estimatedPlanMinutes: Int {
+        let drillMinutes = practicePlan.count * 7
+        let warmupMinutes = practicePlanWarmupLevel != nil ? 10 : 0
+        return warmupMinutes + drillMinutes
+    }
+
+    /// Generate a random plan for the given level: warmup + 4 drills across skills
+    func generatePlan(for level: PlayerLevel) {
+        var plan: [Drill] = []
+        let skills: [SkillCategory] = [.serving, .passing, .setting, .hitting]
+        for skill in skills {
+            if let drill = randomDrill(for: skill, level: level), !plan.contains(where: { $0.name == drill.name }) {
+                plan.append(drill)
+            }
+        }
+        if plan.count < 4 {
+            let extra = drills(for: .defense, level: level).randomElement()
+            if let e = extra, plan.count < 5 { plan.append(e) }
+        }
+        practicePlan = Array(plan.prefix(5))
+        practicePlanWarmupLevel = level
+        savePracticePlan()
+        saveWarmupPlan()
+    }
+
+    // MARK: - Favorites
+
+    private func loadFavorites() {
+        if let names = UserDefaults.standard.stringArray(forKey: favoritesKey) {
+            favoriteDrillNames = Set(names)
+        }
+    }
+
+    private func saveFavorites() {
+        UserDefaults.standard.set(Array(favoriteDrillNames), forKey: favoritesKey)
+    }
+
+    func toggleFavorite(_ drill: Drill) {
+        if favoriteDrillNames.contains(drill.name) {
+            favoriteDrillNames.remove(drill.name)
+        } else {
+            favoriteDrillNames.insert(drill.name)
+        }
+        saveFavorites()
+    }
+
+    func isFavorite(_ drill: Drill) -> Bool {
+        favoriteDrillNames.contains(drill.name)
+    }
+
+    var favoriteDrills: [Drill] {
+        allDrills.filter { favoriteDrillNames.contains($0.name) }
+    }
+
+    // MARK: - Recently Viewed
+
+    private func loadRecentlyViewed() {
+        recentlyViewedDrillNames = UserDefaults.standard.stringArray(forKey: recentlyViewedKey) ?? []
+    }
+
+    private func saveRecentlyViewed() {
+        UserDefaults.standard.set(recentlyViewedDrillNames, forKey: recentlyViewedKey)
+    }
+
+    func recordViewed(_ drill: Drill) {
+        recentlyViewedDrillNames.removeAll { $0 == drill.name }
+        recentlyViewedDrillNames.append(drill.name)
+        if recentlyViewedDrillNames.count > maxRecentCount {
+            recentlyViewedDrillNames.removeFirst()
+        }
+        saveRecentlyViewed()
+    }
+
+    var recentlyViewedDrills: [Drill] {
+        recentlyViewedDrillNames.reversed().compactMap { name in
+            allDrills.first { $0.name == name }
+        }
     }
 }

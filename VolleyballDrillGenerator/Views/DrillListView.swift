@@ -7,15 +7,21 @@ struct DrillListView: View {
     @EnvironmentObject var store: DrillStore
     @State private var selectedSkill: SkillCategory = .serving
     @State private var selectedLevel: PlayerLevel? = nil  // nil = all levels
+    @State private var showFavoritesOnly = false
     @State private var searchText = ""
 
-    /// Filtered drills based on skill + level + search
+    /// Filtered drills based on skill + level + search + favorites
     private var filteredDrills: [Drill] {
         var result = store.drills(for: selectedSkill)
 
         // Filter by level if one is selected
         if let level = selectedLevel {
             result = result.filter { $0.level == level.rawValue }
+        }
+
+        // Filter by favorites when "Favorites" is on
+        if showFavoritesOnly {
+            result = result.filter { store.favoriteDrillNames.contains($0.name) }
         }
 
         // Filter by search text
@@ -42,9 +48,53 @@ struct DrillListView: View {
                 .padding(.horizontal)
                 .padding(.top)
 
+                // Recently viewed (when available)
+                if !store.recentlyViewedDrills.isEmpty {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("Recently viewed")
+                            .font(.caption.bold())
+                            .foregroundColor(.secondary)
+                            .padding(.horizontal)
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 10) {
+                                ForEach(store.recentlyViewedDrills.prefix(5)) { drill in
+                                    NavigationLink(destination: DrillDetailView(drill: drill)) {
+                                        Text(drill.name)
+                                            .font(.caption)
+                                            .lineLimit(1)
+                                            .padding(.horizontal, 10)
+                                            .padding(.vertical, 6)
+                                            .background(Color(.systemGray5), in: Capsule())
+                                    }
+                                    .buttonStyle(.plain)
+                                }
+                            }
+                            .padding(.horizontal)
+                        }
+                    }
+                    .padding(.bottom, 4)
+                }
+
                 // Level filter chips
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
+                        // Favorites chip
+                        Button {
+                            withAnimation { showFavoritesOnly.toggle() }
+                        } label: {
+                            HStack(spacing: 3) {
+                                Image(systemName: showFavoritesOnly ? "heart.fill" : "heart")
+                                    .font(.caption2)
+                                Text("Favorites")
+                                    .font(.caption.bold())
+                            }
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 6)
+                            .foregroundColor(showFavoritesOnly ? .white : .primary)
+                            .background(showFavoritesOnly ? Color.pink : Color(.systemGray5),
+                                        in: Capsule())
+                        }
+
                         // "All Levels" chip
                         Button {
                             withAnimation { selectedLevel = nil }
@@ -82,20 +132,43 @@ struct DrillListView: View {
 
                 // Drill count
                 HStack {
-                    Text("\(filteredDrills.count) drills")
+                    Text("\(filteredDrills.count) drill\(filteredDrills.count == 1 ? "" : "s")")
                         .font(.caption)
                         .foregroundColor(.secondary)
                     Spacer()
                 }
                 .padding(.horizontal)
 
-                // Drill list
-                List(filteredDrills) { drill in
-                    NavigationLink(destination: DrillDetailView(drill: drill)) {
-                        DrillRowView(drill: drill)
+                // Drill list or empty state
+                if filteredDrills.isEmpty {
+                    VStack(spacing: 16) {
+                        Image(systemName: "magnifyingglass")
+                            .font(.system(size: 50))
+                            .foregroundColor(.orange.opacity(0.6))
+                        Text("No drills match")
+                            .font(.headline)
+                        Text("Try a different skill, level, or search term.")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .multilineTextAlignment(.center)
+                        Button("Clear filters") {
+                            searchText = ""
+                            selectedLevel = nil
+                        }
+                        .font(.subheadline.bold())
+                        .foregroundColor(.orange)
+                        .padding(.top, 8)
                     }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 60)
+                } else {
+                    List(filteredDrills) { drill in
+                        NavigationLink(destination: DrillDetailView(drill: drill)) {
+                            DrillRowView(drill: drill)
+                        }
+                    }
+                    .listStyle(.plain)
                 }
-                .listStyle(.plain)
             }
             .navigationTitle("All Drills")
             .searchable(text: $searchText, prompt: "Search drills...")

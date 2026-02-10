@@ -118,7 +118,19 @@ struct DrillDetailView: View {
         }
         .navigationTitle(drill.name)
         .navigationBarTitleDisplayMode(.large)
+        .onAppear {
+            store.recordViewed(drill)
+        }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    store.toggleFavorite(drill)
+                } label: {
+                    Image(systemName: store.isFavorite(drill) ? "heart.fill" : "heart")
+                        .foregroundColor(store.isFavorite(drill) ? .red : .primary)
+                }
+                .accessibilityLabel(store.isFavorite(drill) ? "Remove from favorites" : "Add to favorites")
+            }
+        }
     }
-
-    // Skill color now comes from SkillCategory.color
 }

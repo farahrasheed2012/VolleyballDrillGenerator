@@ -29,6 +29,8 @@ struct GeneratorView: View {
                             .buttonStyle(.plain)
                         }
                         .padding(.horizontal)
+                        .accessibilityElement(children: .combine)
+                        .accessibilityLabel("Drill of the Day, \(dotd.name)")
                     }
 
                     Divider().padding(.horizontal)
@@ -126,11 +128,26 @@ struct GeneratorView: View {
 
                     // MARK: Generated Drill Result
                     if let drill = generatedDrill {
-                        NavigationLink(destination: DrillDetailView(drill: drill)) {
-                            DrillCardView(drill: drill)
-                                .scaleEffect(animateDrill ? 1.03 : 1.0)
+                        VStack(spacing: 10) {
+                            NavigationLink(destination: DrillDetailView(drill: drill)) {
+                                DrillCardView(drill: drill)
+                                    .scaleEffect(animateDrill ? 1.03 : 1.0)
+                            }
+                            .buttonStyle(.plain)
+
+                            Button {
+                                store.toggleInPlan(drill)
+                            } label: {
+                                Label(
+                                    store.isInPlan(drill) ? "Remove from plan" : "Add to plan",
+                                    systemImage: store.isInPlan(drill) ? "minus.circle.fill" : "plus.circle.fill"
+                                )
+                                .font(.subheadline.bold())
+                                .foregroundColor(store.isInPlan(drill) ? .red : .orange)
+                            }
+                            .disabled(store.practicePlan.count >= 5 && !store.isInPlan(drill))
+                            .opacity(store.practicePlan.count >= 5 && !store.isInPlan(drill) ? 0.6 : 1)
                         }
-                        .buttonStyle(.plain)
                         .padding(.horizontal)
                         .transition(.scale.combined(with: .opacity))
                     } else {
@@ -144,6 +161,9 @@ struct GeneratorView: View {
                 .padding(.top)
             }
             .navigationTitle("Volleyball Drill Generator")
+            .refreshable {
+                store.refreshDrillOfTheDay()
+            }
         }
     }
 }

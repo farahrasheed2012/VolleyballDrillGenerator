@@ -4,6 +4,7 @@ import SwiftUI
 
 /// Displays the 10-minute warmup plan with a timer: start, pause, resume, reset, skip section.
 struct WarmupPlanView: View {
+    @EnvironmentObject var store: DrillStore
     let level: PlayerLevel
 
     private let totalSeconds = 600 // 10 min
@@ -14,6 +15,7 @@ struct WarmupPlanView: View {
 
     @State private var elapsedSeconds: Int = 0
     @State private var isRunning: Bool = false
+    @State private var lastSegmentIndexForHaptic: Int = -1
 
     private var currentSegmentIndex: Int {
         guard let plan = plan else { return 0 }
@@ -45,6 +47,21 @@ struct WarmupPlanView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 24) {
                         timerCard
+
+                        if store.practicePlanWarmupLevel != level {
+                            Button {
+                                store.setWarmupInPlan(level: level)
+                            } label: {
+                                Label("Add warmup to practice plan", systemImage: "plus.circle.fill")
+                                    .font(.subheadline.bold())
+                                    .foregroundColor(.white)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 12)
+                                    .background(Color.orange, in: RoundedRectangle(cornerRadius: 12))
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.horizontal)
+                        }
 
                         HStack(spacing: 8) {
                             Image(systemName: level.icon)
@@ -85,6 +102,12 @@ struct WarmupPlanView: View {
                 if elapsedSeconds >= totalSeconds {
                     isRunning = false
                 }
+                let idx = currentSegmentIndex
+                if idx != lastSegmentIndexForHaptic {
+                    lastSegmentIndexForHaptic = idx
+                    let generator = UIImpactFeedbackGenerator(style: .light)
+                    generator.impactOccurred()
+                }
             }
         }
     }
@@ -99,6 +122,8 @@ struct WarmupPlanView: View {
                     .font(.title2)
                     .foregroundColor(.secondary)
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("\(elapsedSeconds / 60) minutes \(elapsedSeconds % 60) seconds of 10 minutes")
 
             ProgressView(value: Double(elapsedSeconds), total: Double(totalSeconds))
                 .tint(.orange)
@@ -118,6 +143,7 @@ struct WarmupPlanView: View {
                             .background(Color.orange, in: RoundedRectangle(cornerRadius: 14))
                     }
                     .buttonStyle(.plain)
+                    .accessibilityHint("Starts the 10-minute warmup timer")
                 } else {
                     if isRunning {
                         Button {
@@ -131,6 +157,7 @@ struct WarmupPlanView: View {
                                 .background(Color.orange, in: RoundedRectangle(cornerRadius: 14))
                         }
                         .buttonStyle(.plain)
+                        .accessibilityHint("Pauses the timer")
                     } else {
                         Button {
                             isRunning = true
@@ -143,6 +170,7 @@ struct WarmupPlanView: View {
                                 .background(Color.orange, in: RoundedRectangle(cornerRadius: 14))
                         }
                         .buttonStyle(.plain)
+                        .accessibilityHint("Resumes the timer")
                     }
 
                     Button {
@@ -157,6 +185,7 @@ struct WarmupPlanView: View {
                             .background(Color.orange.opacity(0.15), in: RoundedRectangle(cornerRadius: 14))
                     }
                     .buttonStyle(.plain)
+                    .accessibilityHint("Resets the timer to zero")
                 }
             }
 
@@ -170,6 +199,7 @@ struct WarmupPlanView: View {
                         .padding(.vertical, 12)
                 }
                 .buttonStyle(.plain)
+                .accessibilityHint("Jumps to the next warmup segment")
             }
         }
         .padding(20)
@@ -255,5 +285,6 @@ private struct WarmupSegmentCard: View {
 #Preview {
     NavigationView {
         WarmupPlanView(level: .beginner)
+            .environmentObject(DrillStore())
     }
 }
