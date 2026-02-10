@@ -46,7 +46,7 @@ struct WarmupPlanView: View {
         Group {
             if let plan = plan {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 24) {
+                    VStack(alignment: .leading, spacing: 28) {
                         timerCard
 
                         if store.practicePlanWarmupLevel != level {
@@ -54,23 +54,25 @@ struct WarmupPlanView: View {
                                 store.setWarmupInPlan(level: level)
                             } label: {
                                 Label("Add warmup to practice plan", systemImage: "plus.circle.fill")
-                                    .font(.subheadline.weight(.semibold))
+                                    .font(.subheadline.weight(.medium))
                                     .frame(maxWidth: .infinity)
-                                    .frame(minHeight: 44)
                             }
                             .buttonStyle(.borderedProminent)
                             .tint(.orange)
-                            .padding(.horizontal)
+                            .controlSize(.regular)
+                            .padding(.horizontal, 20)
                         }
 
-                        HStack(spacing: 8) {
-                            Image(systemName: level.icon)
-                                .font(.body)
-                            Text(level.rawValue)
-                                .font(.headline)
+                        VStack(alignment: .leading, spacing: 6) {
+                            HStack(spacing: 8) {
+                                Image(systemName: level.icon)
+                                    .font(.body)
+                                Text(level.rawValue)
+                                    .font(.headline)
+                            }
+                            .foregroundColor(level.color)
                         }
-                        .foregroundColor(level.color)
-                        .padding(.horizontal)
+                        .padding(.horizontal, 4)
 
                         ForEach(Array(plan.segments.enumerated()), id: \.element.id) { index, segment in
                             WarmupSegmentCard(
@@ -82,9 +84,10 @@ struct WarmupPlanView: View {
                             )
                         }
 
-                        Spacer(minLength: 40)
+                        Spacer(minLength: 48)
                     }
-                    .padding(.top, 8)
+                    .padding(.top, 16)
+                    .padding(.bottom, 32)
                 }
             } else {
                 ProgressView("Loading warmup…")
@@ -116,8 +119,8 @@ struct WarmupPlanView: View {
     }
 
     private var timerCard: some View {
-        VStack(spacing: 16) {
-            HStack(alignment: .firstTextBaseline, spacing: 4) {
+        VStack(spacing: 20) {
+            HStack(alignment: .firstTextBaseline, spacing: 6) {
                 Text(formattedElapsed)
                     .font(.largeTitle.weight(.bold))
                     .monospacedDigit()
@@ -139,19 +142,18 @@ struct WarmupPlanView: View {
                 .tint(.orange)
                 .scaleEffect(y: 1.2)
 
-            // Start / Pause / Resume / Reset
             HStack(spacing: 12) {
                 if elapsedSeconds == 0 && !isRunning {
                     Button {
                         isRunning = true
                     } label: {
                         Label("Start", systemImage: "play.fill")
-                            .font(.headline)
+                            .font(.body.weight(.semibold))
                             .frame(maxWidth: .infinity)
-                            .frame(minHeight: 50)
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(.orange)
+                    .controlSize(.regular)
                     .accessibilityHint("Starts the 10-minute warmup timer")
                 } else {
                     if isRunning {
@@ -159,24 +161,24 @@ struct WarmupPlanView: View {
                             isRunning = false
                         } label: {
                             Label("Pause", systemImage: "pause.fill")
-                                .font(.headline)
+                                .font(.body.weight(.semibold))
                                 .frame(maxWidth: .infinity)
-                                .frame(minHeight: 50)
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(.orange)
+                        .controlSize(.regular)
                         .accessibilityHint("Pauses the timer")
                     } else {
                         Button {
                             isRunning = true
                         } label: {
                             Label("Resume", systemImage: "play.fill")
-                                .font(.headline)
+                                .font(.body.weight(.semibold))
                                 .frame(maxWidth: .infinity)
-                                .frame(minHeight: 50)
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(.orange)
+                        .controlSize(.regular)
                         .accessibilityHint("Resumes the timer")
                     }
 
@@ -185,12 +187,12 @@ struct WarmupPlanView: View {
                         elapsedSeconds = 0
                     } label: {
                         Label("Reset", systemImage: "arrow.counterclockwise")
-                            .font(.headline)
+                            .font(.body.weight(.semibold))
                             .frame(maxWidth: .infinity)
-                            .frame(minHeight: 50)
                     }
                     .buttonStyle(.bordered)
                     .tint(.orange)
+                    .controlSize(.regular)
                     .accessibilityHint("Resets the timer to zero")
                 }
             }
@@ -198,18 +200,19 @@ struct WarmupPlanView: View {
             if canSkipSection {
                 Button(action: skipToNextSection) {
                     Label("Skip to next section", systemImage: "forward.fill")
-                        .font(.subheadline.weight(.semibold))
+                        .font(.subheadline.weight(.medium))
                         .frame(maxWidth: .infinity)
-                        .frame(minHeight: 44)
                 }
                 .buttonStyle(.plain)
                 .foregroundColor(.orange)
+                .controlSize(.regular)
                 .accessibilityHint("Jumps to the next warmup segment")
             }
         }
-        .padding(20)
-        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 12))
-        .padding(.horizontal)
+        .padding(24)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16))
+        .padding(.horizontal, 20)
     }
 }
 
@@ -263,14 +266,13 @@ private struct WarmupSegmentCard: View {
                         .font(.subheadline.bold())
                         .foregroundColor(.secondary)
                 }
-                .padding(.horizontal, 16)
-                .padding(.top, 14)
+                .padding(.horizontal, 20)
+                .padding(.top, 18)
 
-                // Steps — visible when section is expanded
                 if isExpanded {
-                    VStack(alignment: .leading, spacing: 10) {
+                    VStack(alignment: .leading, spacing: 12) {
                         Text("Steps")
-                            .font(.subheadline.bold())
+                            .font(.subheadline.weight(.semibold))
                             .foregroundColor(.secondary)
                         ForEach(Array(segment.instructions.enumerated()), id: \.offset) { stepIndex, step in
                             HStack(alignment: .top, spacing: 10) {
@@ -285,27 +287,27 @@ private struct WarmupSegmentCard: View {
                             }
                         }
                     }
-                    .padding(.horizontal, 16)
-                    .padding(.bottom, 14)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 18)
                 } else {
                     Text("Tap for steps")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                        .padding(.horizontal, 16)
-                        .padding(.bottom, 14)
+                        .font(.footnote)
+                        .foregroundColor(Color(.tertiaryLabel))
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 18)
                 }
             }
         }
         .buttonStyle(.plain)
         .background(
             Color(.secondarySystemGroupedBackground),
-            in: RoundedRectangle(cornerRadius: 12)
+            in: RoundedRectangle(cornerRadius: 16)
         )
         .overlay(
-            RoundedRectangle(cornerRadius: 12)
+            RoundedRectangle(cornerRadius: 16)
                 .stroke(isActive ? Color.orange : Color.clear, lineWidth: 2)
         )
-        .padding(.horizontal)
+        .padding(.horizontal, 20)
         .accessibilityLabel("\(segment.title), \(segment.timeRange). \(isExpanded ? "Steps expanded" : "Double tap to show steps")")
     }
 }

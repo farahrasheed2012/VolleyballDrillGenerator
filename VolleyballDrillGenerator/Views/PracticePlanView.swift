@@ -29,7 +29,7 @@ struct PracticePlanView: View {
     }
 
     private var emptyState: some View {
-        VStack(spacing: 28) {
+        VStack(spacing: 32) {
             Image(systemName: "calendar.badge.plus")
                 .font(.largeTitle)
                 .symbolRenderingMode(.hierarchical)
@@ -40,29 +40,28 @@ struct PracticePlanView: View {
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 32)
+                .padding(.horizontal, 40)
 
-            VStack(spacing: 16) {
+            VStack(spacing: 20) {
                 Picker("Level", selection: $generateLevel) {
                     ForEach(PlayerLevel.allCases) { level in
                         Text(level.shortLabel).tag(level)
                     }
                 }
                 .pickerStyle(.segmented)
-                .padding(.horizontal, 24)
+                .padding(.horizontal, 28)
 
                 Button {
                     store.generatePlan(for: generateLevel)
                 } label: {
                     Label("Generate a plan", systemImage: "wand.and.stars")
-                        .font(.headline)
+                        .font(.body.weight(.semibold))
                         .frame(maxWidth: .infinity)
-                        .frame(minHeight: 50)
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(.orange)
-                .controlSize(.large)
-                .padding(.horizontal, 24)
+                .controlSize(.regular)
+                .padding(.horizontal, 28)
             }
             .padding(.top, 8)
         }

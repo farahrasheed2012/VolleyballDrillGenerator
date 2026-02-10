@@ -15,13 +15,13 @@ struct GeneratorView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(alignment: .leading, spacing: 28) {
+                VStack(alignment: .leading, spacing: 32) {
 
                     // MARK: Drill of the Day
                     if let dotd = store.drillOfTheDay {
-                        VStack(alignment: .leading, spacing: 10) {
+                        VStack(alignment: .leading, spacing: 12) {
                             Label("Drill of the Day", systemImage: "star.fill")
-                                .font(.subheadline.weight(.semibold))
+                                .font(.subheadline.weight(.medium))
                                 .foregroundColor(.secondary)
 
                             NavigationLink(destination: DrillDetailView(drill: dotd)) {
@@ -29,20 +29,21 @@ struct GeneratorView: View {
                             }
                             .buttonStyle(.plain)
                         }
-                        .padding(.horizontal)
+                        .padding(20)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16))
+                        .padding(.horizontal, 20)
                         .accessibilityElement(children: .combine)
                         .accessibilityLabel("Drill of the Day, \(dotd.name)")
                     }
 
-                    Divider()
-                        .padding(.horizontal, 20)
-
                     // MARK: Player Level Picker
-                    VStack(alignment: .leading, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 14) {
                         Text("Player Level")
-                            .font(.headline)
-                            .foregroundColor(.primary)
-                            .padding(.horizontal)
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundColor(.secondary)
+                            .textCase(.uppercase)
+                            .padding(.horizontal, 4)
 
                         HStack(spacing: 10) {
                             ForEach(PlayerLevel.allCases) { level in
@@ -52,15 +53,16 @@ struct GeneratorView: View {
                                 }
                             }
                         }
-                        .padding(.horizontal)
                     }
+                    .padding(.horizontal, 20)
 
                     // MARK: Skill Picker
-                    VStack(alignment: .leading, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 14) {
                         Text("Select a Skill")
-                            .font(.headline)
-                            .foregroundColor(.primary)
-                            .padding(.horizontal)
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundColor(.secondary)
+                            .textCase(.uppercase)
+                            .padding(.horizontal, 4)
 
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 12) {
@@ -71,31 +73,32 @@ struct GeneratorView: View {
                                     }
                                 }
                             }
-                            .padding(.horizontal)
+                            .padding(.horizontal, 20)
                         }
                     }
+                    .padding(.horizontal, 20)
 
                     // Drill count for current filters
                     let matchCount = store.drills(for: selectedSkill, level: selectedLevel).count
                     Text("\(matchCount) drill\(matchCount == 1 ? "" : "s") available")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                        .padding(.horizontal)
+                        .font(.footnote)
+                        .foregroundColor(Color(.tertiaryLabel))
+                        .padding(.horizontal, 20)
 
                     // MARK: 10-Minute Warmup Plan (when Warmup selected)
                     if selectedSkill == .warmup {
                         NavigationLink(destination: WarmupPlanView(level: selectedLevel)) {
-                            HStack(spacing: 14) {
+                            HStack(spacing: 16) {
                                 Image(systemName: "clock.badge.checkmark")
                                     .font(.title2)
                                     .foregroundColor(.secondary)
-                                    .frame(width: 32, alignment: .center)
-                                VStack(alignment: .leading, spacing: 2) {
+                                    .frame(width: 36, alignment: .center)
+                                VStack(alignment: .leading, spacing: 4) {
                                     Text("10-Minute Warmup Plan")
-                                        .font(.headline)
+                                        .font(.body.weight(.medium))
                                         .foregroundColor(.primary)
                                     Text("Stretching, hands & arms, legs, movement, ball")
-                                        .font(.caption)
+                                        .font(.subheadline)
                                         .foregroundColor(.secondary)
                                 }
                                 Spacer()
@@ -103,11 +106,11 @@ struct GeneratorView: View {
                                     .font(.caption.weight(.semibold))
                                     .foregroundColor(Color(.tertiaryLabel))
                             }
-                            .padding(16)
-                            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 12))
+                            .padding(20)
+                            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16))
                         }
                         .buttonStyle(.plain)
-                        .padding(.horizontal)
+                        .padding(.horizontal, 20)
                     }
 
                     // MARK: Generate Button
@@ -123,20 +126,20 @@ struct GeneratorView: View {
                         }
                     } label: {
                         Label("Generate Drill", systemImage: "shuffle")
-                            .font(.headline)
+                            .font(.body.weight(.semibold))
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(.orange)
                     .controlSize(.regular)
-                    .padding(.horizontal)
+                    .padding(.horizontal, 20)
 
                     // MARK: Generated Drill Result
                     if let drill = generatedDrill {
-                        VStack(spacing: 10) {
+                        VStack(alignment: .leading, spacing: 16) {
                             NavigationLink(destination: DrillDetailView(drill: drill)) {
                                 DrillCardView(drill: drill)
-                                    .scaleEffect((animateDrill && !UIAccessibility.isReduceMotionEnabled) ? 1.03 : 1.0)
+                                    .scaleEffect((animateDrill && !UIAccessibility.isReduceMotionEnabled) ? 1.02 : 1.0)
                             }
                             .buttonStyle(.plain)
 
@@ -147,27 +150,30 @@ struct GeneratorView: View {
                                     store.isInPlan(drill) ? "Remove from plan" : "Add to plan",
                                     systemImage: store.isInPlan(drill) ? "minus.circle.fill" : "plus.circle.fill"
                                 )
-                                .font(.subheadline.weight(.semibold))
+                                .font(.subheadline.weight(.medium))
                             }
                             .buttonStyle(.bordered)
                             .tint(store.isInPlan(drill) ? .red : .orange)
                             .disabled(store.practicePlan.count >= 5 && !store.isInPlan(drill))
                             .opacity(store.practicePlan.count >= 5 && !store.isInPlan(drill) ? 0.6 : 1)
                         }
-                        .padding(.horizontal)
-                        .transition(.scale.combined(with: .opacity))
+                        .padding(20)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16))
+                        .padding(.horizontal, 20)
+                        .transition(.opacity.combined(with: .scale(scale: 0.98)))
                     } else {
                         Text("Tap Generate to get a random drill")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .frame(maxWidth: .infinity)
-                            .padding(.vertical, 28)
+                            .padding(.vertical, 36)
                     }
 
-                    Spacer(minLength: 32)
+                    Spacer(minLength: 40)
                 }
-                .padding(.top, 20)
-                .padding(.bottom, 24)
+                .padding(.top, 24)
+                .padding(.bottom, 32)
             }
             .navigationTitle("Generator")
             .background(Color(.systemGroupedBackground))

@@ -38,46 +38,44 @@ struct DrillListView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                // Skill category picker
                 Picker("Skill", selection: $selectedSkill) {
                     ForEach(SkillCategory.allCases) { skill in
                         Text(skill.rawValue).tag(skill)
                     }
                 }
                 .pickerStyle(.segmented)
-                .padding(.horizontal, 16)
-                .padding(.top, 12)
+                .padding(.horizontal, 20)
+                .padding(.top, 16)
+                .padding(.bottom, 4)
 
-                // Recently viewed (when available)
                 if !store.recentlyViewedDrills.isEmpty {
-                    VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading, spacing: 10) {
                         Text("Recently viewed")
-                            .font(.subheadline.weight(.semibold))
+                            .font(.subheadline.weight(.medium))
                             .foregroundColor(.secondary)
-                            .padding(.horizontal, 16)
+                            .padding(.horizontal, 20)
                         ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 10) {
+                            HStack(spacing: 12) {
                                 ForEach(store.recentlyViewedDrills.prefix(5)) { drill in
                                     NavigationLink(destination: DrillDetailView(drill: drill)) {
                                         Text(drill.name)
                                             .font(.subheadline)
                                             .lineLimit(1)
-                                            .padding(.horizontal, 12)
-                                            .padding(.vertical, 10)
-                                            .background(Color(.tertiarySystemFill), in: Capsule())
+                                            .padding(.horizontal, 14)
+                                            .padding(.vertical, 12)
+                                            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 10))
                                     }
                                     .buttonStyle(.plain)
                                 }
                             }
-                            .padding(.horizontal, 16)
+                            .padding(.horizontal, 20)
                         }
                     }
-                    .padding(.bottom, 8)
+                    .padding(.bottom, 12)
                 }
 
-                // Level filter chips
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 10) {
+                    HStack(spacing: 12) {
                         // Favorites chip
                         Button {
                             withAnimation { showFavoritesOnly.toggle() }
@@ -129,23 +127,21 @@ struct DrillListView: View {
                             .buttonStyle(.plain)
                         }
                     }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 10)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 12)
                 }
 
-                // Drill count
                 HStack {
                     Text("\(filteredDrills.count) drill\(filteredDrills.count == 1 ? "" : "s")")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                        .font(.footnote)
+                        .foregroundColor(Color(.tertiaryLabel))
                     Spacer()
                 }
-                .padding(.horizontal, 16)
-                .padding(.bottom, 4)
+                .padding(.horizontal, 20)
+                .padding(.bottom, 8)
 
-                // Drill list or empty state
                 if filteredDrills.isEmpty {
-                    VStack(spacing: 20) {
+                    VStack(spacing: 24) {
                         Image(systemName: "magnifyingglass")
                             .font(.largeTitle)
                             .symbolRenderingMode(.hierarchical)
@@ -156,17 +152,18 @@ struct DrillListView: View {
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
-                            .padding(.horizontal, 32)
+                            .padding(.horizontal, 40)
                         Button("Clear filters") {
                             searchText = ""
                             selectedLevel = nil
                         }
-                        .font(.subheadline.weight(.semibold))
+                        .font(.subheadline.weight(.medium))
                         .buttonStyle(.bordered)
-                        .padding(.top, 8)
+                        .controlSize(.regular)
+                        .padding(.top, 4)
                     }
                     .frame(maxWidth: .infinity)
-                    .padding(.top, 48)
+                    .padding(.top, 56)
                 } else {
                     List(filteredDrills) { drill in
                         NavigationLink(destination: DrillDetailView(drill: drill)) {
@@ -190,15 +187,16 @@ struct DrillRowView: View {
     let drill: Drill
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .top) {
                 Text(drill.name)
-                    .font(.headline)
+                    .font(.body.weight(.semibold))
+                    .foregroundColor(.primary)
 
-                Spacer()
+                Spacer(minLength: 8)
 
                 if let lvl = drill.playerLevel {
-                    HStack(spacing: 3) {
+                    HStack(spacing: 4) {
                         Image(systemName: lvl.icon)
                             .font(.caption2)
                         Text(lvl.shortLabel)
@@ -222,8 +220,8 @@ struct DrillRowView: View {
                 Text(drill.equipment.joined(separator: ", "))
                     .font(.caption)
             }
-            .foregroundColor(.secondary)
+            .foregroundColor(Color(.tertiaryLabel))
         }
-        .padding(.vertical, 8)
+        .padding(.vertical, 12)
     }
 }

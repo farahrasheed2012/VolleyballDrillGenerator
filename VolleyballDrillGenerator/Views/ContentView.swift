@@ -37,7 +37,7 @@ struct ContentView: View {
     }
 
     private func loadErrorView(message: String) -> some View {
-        VStack(spacing: 24) {
+        VStack(spacing: 28) {
             Image(systemName: "exclamationmark.triangle")
                 .font(.largeTitle)
                 .symbolRenderingMode(.hierarchical)
@@ -46,13 +46,13 @@ struct ContentView: View {
                 .font(.body)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 32)
+                .padding(.horizontal, 40)
             Button("Retry") {
                 store.retryLoadDrills()
             }
             .buttonStyle(.borderedProminent)
             .tint(.orange)
-            .controlSize(.large)
+            .controlSize(.regular)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.systemGroupedBackground))
