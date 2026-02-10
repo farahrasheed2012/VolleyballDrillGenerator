@@ -21,6 +21,8 @@
 		AA000012 /* GIFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000013 /* GIFImageView.swift */; };
 		AA000013 /* DrillImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000014 /* DrillImageView.swift */; };
 		AA000014 /* DrillImages in Resources */ = {isa = PBXBuildFile; fileRef = AB000015 /* DrillImages */; };
+		AA000016 /* WarmupPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000016 /* WarmupPlan.swift */; };
+		AA000017 /* WarmupPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000017 /* WarmupPlanView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		AB000013 /* GIFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFImageView.swift; sourceTree = "<group>"; };
 		AB000014 /* DrillImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrillImageView.swift; sourceTree = "<group>"; };
 		AB000015 /* DrillImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DrillImages; sourceTree = "<group>"; };
+		AB000016 /* WarmupPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarmupPlan.swift; sourceTree = "<group>"; };
+		AB000017 /* WarmupPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarmupPlanView.swift; sourceTree = "<group>"; };
 		AC000001 /* VolleyballDrillGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VolleyballDrillGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -87,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				AB000008 /* DrillModel.swift */,
+				AB000016 /* WarmupPlan.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -110,6 +115,7 @@
 				AB000007 /* PracticePlanView.swift */,
 				AB000013 /* GIFImageView.swift */,
 				AB000014 /* DrillImageView.swift */,
+				AB000017 /* WarmupPlanView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -205,6 +211,8 @@
 				AA000009 /* DrillStore.swift in Sources */,
 				AA000012 /* GIFImageView.swift in Sources */,
 				AA000013 /* DrillImageView.swift in Sources */,
+				AA000016 /* WarmupPlan.swift in Sources */,
+				AA000017 /* WarmupPlanView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -75,6 +75,33 @@ struct GeneratorView: View {
                         .font(.caption)
                         .foregroundColor(.secondary)
 
+                    // MARK: 10-Minute Warmup Plan (when Warmup selected)
+                    if selectedSkill == .warmup {
+                        NavigationLink(destination: WarmupPlanView(level: selectedLevel)) {
+                            HStack(spacing: 12) {
+                                Image(systemName: "clock.badge.checkmark")
+                                    .font(.title2)
+                                    .foregroundColor(.pink)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text("10-Minute Warmup Plan")
+                                        .font(.headline)
+                                        .foregroundColor(.primary)
+                                    Text("Stretching, hands & arms, legs, movement, ball")
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                }
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .font(.caption.bold())
+                                    .foregroundColor(.secondary)
+                            }
+                            .padding(16)
+                            .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 14))
+                        }
+                        .buttonStyle(.plain)
+                        .padding(.horizontal)
+                    }
+
                     // MARK: Generate Button
                     Button {
                         withAnimation(.spring()) {
