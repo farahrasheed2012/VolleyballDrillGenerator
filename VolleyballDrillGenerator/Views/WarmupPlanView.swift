@@ -2,45 +2,179 @@ import SwiftUI
 
 // MARK: - Warmup Plan View
 
-/// Displays the 10-minute warmup plan for the selected level with segments:
-/// Stretching, Hands & Arms, Legs, Movement, Ball.
+/// Displays the 10-minute warmup plan with a timer: start, pause, resume, reset, skip section.
 struct WarmupPlanView: View {
     let level: PlayerLevel
-    private var plan: WarmupPlan { WarmupPlan.plan(for: level) }
+
+    private let totalSeconds = 600 // 10 min
+    private let segmentDuration = 120 // 2 min each
+
+    /// Plan is generated once on appear so segment content doesn’t change when the timer updates.
+    @State private var plan: WarmupPlan?
+
+    @State private var elapsedSeconds: Int = 0
+    @State private var isRunning: Bool = false
+
+    private var currentSegmentIndex: Int {
+        guard let plan = plan else { return 0 }
+        return min(elapsedSeconds / segmentDuration, plan.segments.count - 1)
+    }
+
+    private var canSkipSection: Bool {
+        guard let plan = plan else { return false }
+        return elapsedSeconds < totalSeconds && currentSegmentIndex < plan.segments.count - 1
+    }
+
+    private func skipToNextSection() {
+        let nextStart = (currentSegmentIndex + 1) * segmentDuration
+        elapsedSeconds = min(nextStart, totalSeconds)
+        if elapsedSeconds >= totalSeconds {
+            isRunning = false
+        }
+    }
+
+    private var formattedElapsed: String {
+        let m = elapsedSeconds / 60
+        let s = elapsedSeconds % 60
+        return String(format: "%d:%02d", m, s)
+    }
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
-                // Header
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack(spacing: 8) {
-                        Image(systemName: "clock.fill")
-                            .foregroundColor(.orange)
-                        Text("10 minutes total")
-                            .font(.subheadline.bold())
-                            .foregroundColor(.secondary)
-                    }
-                    HStack(spacing: 8) {
-                        Image(systemName: level.icon)
-                        Text(level.rawValue)
-                            .font(.headline)
-                    }
-                    .foregroundColor(level.color)
-                }
-                .padding(.horizontal)
+        Group {
+            if let plan = plan {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 24) {
+                        timerCard
 
-                // Segments
-                ForEach(plan.segments) { segment in
-                    WarmupSegmentCard(segment: segment)
-                }
+                        HStack(spacing: 8) {
+                            Image(systemName: level.icon)
+                            Text(level.rawValue)
+                                .font(.headline)
+                        }
+                        .foregroundColor(level.color)
+                        .padding(.horizontal)
 
-                Spacer(minLength: 40)
+                        ForEach(Array(plan.segments.enumerated()), id: \.element.id) { index, segment in
+                            WarmupSegmentCard(
+                                segment: segment,
+                                isActive: index == currentSegmentIndex,
+                                isPast: index < currentSegmentIndex
+                            )
+                        }
+
+                        Spacer(minLength: 40)
+                    }
+                    .padding(.top, 8)
+                }
+            } else {
+                ProgressView("Loading warmup…")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .padding(.top, 8)
         }
         .background(Color(.systemGroupedBackground))
         .navigationTitle("10-Min Warmup")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            if plan == nil {
+                plan = WarmupPlan.plan(for: level)
+            }
+        }
+        .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()) { _ in
+            if isRunning && elapsedSeconds < totalSeconds {
+                elapsedSeconds += 1
+                if elapsedSeconds >= totalSeconds {
+                    isRunning = false
+                }
+            }
+        }
+    }
+
+    private var timerCard: some View {
+        VStack(spacing: 16) {
+            HStack(alignment: .firstTextBaseline, spacing: 4) {
+                Text(formattedElapsed)
+                    .font(.system(size: 44, weight: .bold, design: .monospaced))
+                    .foregroundColor(.primary)
+                Text(" / 10:00")
+                    .font(.title2)
+                    .foregroundColor(.secondary)
+            }
+
+            ProgressView(value: Double(elapsedSeconds), total: Double(totalSeconds))
+                .tint(.orange)
+                .scaleEffect(y: 1.2)
+
+            // Start / Pause / Resume / Reset
+            HStack(spacing: 12) {
+                if elapsedSeconds == 0 && !isRunning {
+                    Button {
+                        isRunning = true
+                    } label: {
+                        Label("Start", systemImage: "play.fill")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 14)
+                            .background(Color.orange, in: RoundedRectangle(cornerRadius: 14))
+                    }
+                    .buttonStyle(.plain)
+                } else {
+                    if isRunning {
+                        Button {
+                            isRunning = false
+                        } label: {
+                            Label("Pause", systemImage: "pause.fill")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 14)
+                                .background(Color.orange, in: RoundedRectangle(cornerRadius: 14))
+                        }
+                        .buttonStyle(.plain)
+                    } else {
+                        Button {
+                            isRunning = true
+                        } label: {
+                            Label("Resume", systemImage: "play.fill")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 14)
+                                .background(Color.orange, in: RoundedRectangle(cornerRadius: 14))
+                        }
+                        .buttonStyle(.plain)
+                    }
+
+                    Button {
+                        isRunning = false
+                        elapsedSeconds = 0
+                    } label: {
+                        Label("Reset", systemImage: "arrow.counterclockwise")
+                            .font(.headline)
+                            .foregroundColor(.orange)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 14)
+                            .background(Color.orange.opacity(0.15), in: RoundedRectangle(cornerRadius: 14))
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+
+            // Skip section (only when there is a next section)
+            if canSkipSection {
+                Button(action: skipToNextSection) {
+                    Label("Skip to next section", systemImage: "forward.fill")
+                        .font(.subheadline.bold())
+                        .foregroundColor(.orange)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(20)
+        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16))
+        .padding(.horizontal)
     }
 }
 
@@ -48,17 +182,33 @@ struct WarmupPlanView: View {
 
 private struct WarmupSegmentCard: View {
     let segment: WarmupPlanSegment
+    let isActive: Bool
+    let isPast: Bool
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 10) {
                 Image(systemName: segment.icon)
                     .font(.title2)
-                    .foregroundColor(.orange)
+                    .foregroundColor(isActive ? .white : .orange)
                     .frame(width: 32, alignment: .center)
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(segment.title)
-                        .font(.headline)
+                    HStack(spacing: 6) {
+                        Text(segment.title)
+                            .font(.headline)
+                        if isActive {
+                            Text("Now")
+                                .font(.caption2.bold())
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2)
+                                .background(Color.orange, in: Capsule())
+                        } else if isPast {
+                            Image(systemName: "checkmark.circle.fill")
+                                .font(.caption)
+                                .foregroundColor(.green)
+                        }
+                    }
                     Text(segment.timeRange)
                         .font(.caption)
                         .foregroundColor(.secondary)
@@ -66,10 +216,10 @@ private struct WarmupSegmentCard: View {
                 Spacer()
                 Text("\(segment.durationMinutes) min")
                     .font(.subheadline.bold())
-                    .foregroundColor(.white)
+                    .foregroundColor(isActive ? .orange : .white)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 4)
-                    .background(Color.orange, in: Capsule())
+                    .background(isActive ? Color.orange.opacity(0.2) : Color.orange, in: Capsule())
             }
             .padding(.horizontal, 16)
             .padding(.top, 14)
@@ -88,7 +238,14 @@ private struct WarmupSegmentCard: View {
             .padding(.horizontal, 16)
             .padding(.bottom, 14)
         }
-        .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 16))
+        .background(
+            Color(.secondarySystemGroupedBackground),
+            in: RoundedRectangle(cornerRadius: 16)
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(isActive ? Color.orange : Color.clear, lineWidth: 3)
+        )
         .padding(.horizontal)
     }
 }
