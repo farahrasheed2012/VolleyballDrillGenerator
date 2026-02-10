@@ -16,6 +16,7 @@ struct WarmupPlanView: View {
     @State private var elapsedSeconds: Int = 0
     @State private var isRunning: Bool = false
     @State private var lastSegmentIndexForHaptic: Int = -1
+    @State private var expandedSegmentIndex: Int? = nil
 
     private var currentSegmentIndex: Int {
         guard let plan = plan else { return 0 }
@@ -75,7 +76,9 @@ struct WarmupPlanView: View {
                             WarmupSegmentCard(
                                 segment: segment,
                                 isActive: index == currentSegmentIndex,
-                                isPast: index < currentSegmentIndex
+                                isPast: index < currentSegmentIndex,
+                                isExpanded: expandedSegmentIndex == index,
+                                onTap: { expandedSegmentIndex = expandedSegmentIndex == index ? nil : index }
                             )
                         }
 
@@ -214,60 +217,84 @@ private struct WarmupSegmentCard: View {
     let segment: WarmupPlanSegment
     let isActive: Bool
     let isPast: Bool
+    let isExpanded: Bool
+    let onTap: () -> Void
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack(spacing: 10) {
-                Image(systemName: segment.icon)
-                    .font(.title2)
-                    .foregroundColor(isActive ? .white : .orange)
-                    .frame(width: 32, alignment: .center)
-                VStack(alignment: .leading, spacing: 2) {
-                    HStack(spacing: 6) {
-                        Text(segment.title)
-                            .font(.headline)
-                        if isActive {
-                            Text("Now")
-                                .font(.caption2.bold())
-                                .foregroundColor(.white)
-                                .padding(.horizontal, 6)
-                                .padding(.vertical, 2)
-                                .background(Color.orange, in: Capsule())
-                        } else if isPast {
-                            Image(systemName: "checkmark.circle.fill")
-                                .font(.caption)
-                                .foregroundColor(.green)
+        Button(action: onTap) {
+            VStack(alignment: .leading, spacing: 12) {
+                // Header row: icon, title, status, duration, chevron
+                HStack(spacing: 10) {
+                    Image(systemName: segment.icon)
+                        .font(.title2)
+                        .foregroundColor(isActive ? .white : .orange)
+                        .frame(width: 32, alignment: .center)
+                    VStack(alignment: .leading, spacing: 2) {
+                        HStack(spacing: 6) {
+                            Text(segment.title)
+                                .font(.headline)
+                            if isActive {
+                                Text("Now")
+                                    .font(.caption2.bold())
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 6)
+                                    .padding(.vertical, 2)
+                                    .background(Color.orange, in: Capsule())
+                            } else if isPast {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .font(.caption)
+                                    .foregroundColor(.green)
+                            }
                         }
+                        Text(segment.timeRange)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
                     }
-                    Text(segment.timeRange)
-                        .font(.caption)
+                    Spacer()
+                    Text("\(segment.durationMinutes) min")
+                        .font(.subheadline.bold())
+                        .foregroundColor(isActive ? .orange : .white)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 4)
+                        .background(isActive ? Color.orange.opacity(0.2) : Color.orange, in: Capsule())
+                    Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                        .font(.subheadline.bold())
                         .foregroundColor(.secondary)
                 }
-                Spacer()
-                Text("\(segment.durationMinutes) min")
-                    .font(.subheadline.bold())
-                    .foregroundColor(isActive ? .orange : .white)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 4)
-                    .background(isActive ? Color.orange.opacity(0.2) : Color.orange, in: Capsule())
-            }
-            .padding(.horizontal, 16)
-            .padding(.top, 14)
+                .padding(.horizontal, 16)
+                .padding(.top, 14)
 
-            VStack(alignment: .leading, spacing: 6) {
-                ForEach(Array(segment.instructions.enumerated()), id: \.offset) { _, step in
-                    HStack(alignment: .top, spacing: 8) {
-                        Text("•")
-                            .foregroundColor(.orange)
-                        Text(step)
-                            .font(.subheadline)
-                            .fixedSize(horizontal: false, vertical: true)
+                // Steps — visible when section is expanded
+                if isExpanded {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Steps")
+                            .font(.subheadline.bold())
+                            .foregroundColor(.secondary)
+                        ForEach(Array(segment.instructions.enumerated()), id: \.offset) { stepIndex, step in
+                            HStack(alignment: .top, spacing: 10) {
+                                Text("\(stepIndex + 1)")
+                                    .font(.caption.bold())
+                                    .foregroundColor(.white)
+                                    .frame(width: 22, height: 22, alignment: .center)
+                                    .background(Color.orange, in: Circle())
+                                Text(step)
+                                    .font(.subheadline)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
+                        }
                     }
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 14)
+                } else {
+                    Text("Tap for steps")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .padding(.horizontal, 16)
+                        .padding(.bottom, 14)
                 }
             }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 14)
         }
+        .buttonStyle(.plain)
         .background(
             Color(.secondarySystemGroupedBackground),
             in: RoundedRectangle(cornerRadius: 16)
@@ -277,6 +304,7 @@ private struct WarmupSegmentCard: View {
                 .stroke(isActive ? Color.orange : Color.clear, lineWidth: 3)
         )
         .padding(.horizontal)
+        .accessibilityLabel("\(segment.title), \(segment.timeRange). \(isExpanded ? "Steps expanded" : "Double tap to show steps")")
     }
 }
 
