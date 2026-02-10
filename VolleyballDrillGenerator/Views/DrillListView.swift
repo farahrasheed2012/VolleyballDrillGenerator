@@ -143,7 +143,7 @@ struct DrillListView: View {
                 if filteredDrills.isEmpty {
                     VStack(spacing: 16) {
                         Image(systemName: "magnifyingglass")
-                            .font(.system(size: 50))
+                            .font(.largeTitle)
                             .foregroundColor(.orange.opacity(0.6))
                         Text("No drills match")
                             .font(.headline)

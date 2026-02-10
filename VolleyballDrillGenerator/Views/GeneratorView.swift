@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 // MARK: - Generator View
 
@@ -106,14 +107,14 @@ struct GeneratorView: View {
 
                     // MARK: Generate Button
                     Button {
-                        withAnimation(.spring()) {
-                            generatedDrill = store.randomDrill(for: selectedSkill,
-                                                               level: selectedLevel)
-                            animateDrill = true
-                        }
-                        // Reset animation flag
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                            animateDrill = false
+                        generatedDrill = store.randomDrill(for: selectedSkill,
+                                                           level: selectedLevel)
+                        let useMotion = !UIAccessibility.isReduceMotionEnabled
+                        if useMotion {
+                            withAnimation(.spring()) { animateDrill = true }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                                animateDrill = false
+                            }
                         }
                     } label: {
                         Label("Generate Drill", systemImage: "shuffle")
@@ -131,7 +132,7 @@ struct GeneratorView: View {
                         VStack(spacing: 10) {
                             NavigationLink(destination: DrillDetailView(drill: drill)) {
                                 DrillCardView(drill: drill)
-                                    .scaleEffect(animateDrill ? 1.03 : 1.0)
+                                    .scaleEffect((animateDrill && !UIAccessibility.isReduceMotionEnabled) ? 1.03 : 1.0)
                             }
                             .buttonStyle(.plain)
 

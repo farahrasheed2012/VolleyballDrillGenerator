@@ -31,7 +31,7 @@ struct PracticePlanView: View {
     private var emptyState: some View {
         VStack(spacing: 24) {
             Image(systemName: "calendar.badge.plus")
-                .font(.system(size: 60))
+                .font(.largeTitle)
                 .foregroundColor(.orange.opacity(0.6))
             Text("No Drills in Plan")
                 .font(.title3.bold())
@@ -162,6 +162,20 @@ struct PracticePlanView: View {
             }
 
             Section {
+                Group {
+                    if store.planSavedAt != nil {
+                        HStack(spacing: 8) {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundColor(.green)
+                            Text("Plan saved")
+                                .font(.subheadline.weight(.medium))
+                                .foregroundColor(.primary)
+                        }
+                        .padding(.vertical, 8)
+                        .listRowBackground(Color.green.opacity(0.12))
+                    }
+                }
+
                 Button(role: .destructive) {
                     showClearConfirm = true
                 } label: {
@@ -212,12 +226,15 @@ struct PracticePlanView: View {
             text += "1. Warmup: 10 min (\(level.rawValue))\n"
             text += "   Use the app's 10-Min Warmup for this level.\n\n"
         }
+        let newline = "\n"
+        let indent = newline + "   "
+        let commaSpace = ", "
         for (i, drill) in store.practicePlan.enumerated() {
             let num = store.practicePlanWarmupLevel != nil ? i + 2 : i + 1
             text += "\(num). \(drill.name)\n"
             text += "   Skill: \(drill.skill)\n"
-            text += "   Equipment: \(drill.equipment.joined(separator: ", "))\n"
-            text += "   \(drill.description.replacingOccurrences(of: "\n", with: "\n   "))\n\n"
+            text += "   Equipment: \(drill.equipment.joined(separator: commaSpace))\n"
+            text += "   \(drill.description.replacingOccurrences(of: newline, with: indent))\n\n"
         }
         return text
     }

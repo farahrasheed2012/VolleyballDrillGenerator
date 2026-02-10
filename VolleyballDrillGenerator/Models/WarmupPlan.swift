@@ -3,14 +3,16 @@ import SwiftUI
 // MARK: - Warmup Plan Segment
 
 /// One segment of a 10-minute warmup (e.g. stretching, hands & arms, legs).
+/// Uses a stable segmentIndex (0–4) as id for tracking and accessibility.
 struct WarmupPlanSegment: Identifiable {
-    let id = UUID()
+    let segmentIndex: Int
     let title: String
     let durationMinutes: Int
     let startMinute: Int
     let instructions: [String]
     let icon: String
 
+    var id: Int { segmentIndex }
     var endMinute: Int { startMinute + durationMinutes }
     var timeRange: String { "\(startMinute):00–\(endMinute):00" }
 }
@@ -37,6 +39,7 @@ struct WarmupPlan {
             let variantsForSegment = allVariants[index]
             let chosen = variantsForSegment.randomElement() ?? variantsForSegment[0]
             let seg = WarmupPlanSegment(
+                segmentIndex: index,
                 title: index == 4 && level != .newToVolleyball ? "Ball" : segmentTitles[index].title,
                 durationMinutes: 2,
                 startMinute: start,

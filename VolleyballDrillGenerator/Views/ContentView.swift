@@ -8,28 +8,53 @@ struct ContentView: View {
     @State private var selectedTab = 0
 
     var body: some View {
-        TabView(selection: $selectedTab) {
-            // Tab 1: Generator + Drill of the Day
-            GeneratorView()
-                .tabItem {
-                    Label("Generator", systemImage: "dice.fill")
-                }
-                .tag(0)
+        Group {
+            if let error = store.loadError {
+                loadErrorView(message: error)
+            } else {
+                TabView(selection: $selectedTab) {
+                    GeneratorView()
+                        .tabItem { Label("Generator", systemImage: "dice.fill") }
+                        .tag(0)
+                        .accessibilityLabel("Generator")
+                        .accessibilityHint("Generate random drills by skill and level")
 
-            // Tab 2: Browse all drills
-            DrillListView()
-                .tabItem {
-                    Label("All Drills", systemImage: "list.bullet.rectangle")
-                }
-                .tag(1)
+                    DrillListView()
+                        .tabItem { Label("All Drills", systemImage: "list.bullet.rectangle") }
+                        .tag(1)
+                        .accessibilityLabel("All Drills")
+                        .accessibilityHint("Browse and search all drills")
 
-            // Tab 3: Build a practice plan
-            PracticePlanView()
-                .tabItem {
-                    Label("Practice Plan", systemImage: "calendar")
+                    PracticePlanView()
+                        .tabItem { Label("Practice Plan", systemImage: "calendar") }
+                        .tag(2)
+                        .accessibilityLabel("Practice Plan")
+                        .accessibilityHint("View and edit your practice session")
                 }
-                .tag(2)
+                .accentColor(.orange)
+            }
         }
-        .accentColor(.orange)
+    }
+
+    private func loadErrorView(message: String) -> some View {
+        VStack(spacing: 20) {
+            Image(systemName: "exclamationmark.triangle")
+                .font(.largeTitle)
+                .foregroundColor(.orange)
+            Text(message)
+                .font(.body)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 40)
+            Button("Retry") {
+                store.retryLoadDrills()
+            }
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding(.horizontal, 24)
+            .padding(.vertical, 12)
+            .background(Color.orange, in: RoundedRectangle(cornerRadius: 12))
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

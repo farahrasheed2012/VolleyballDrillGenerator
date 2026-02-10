@@ -119,7 +119,8 @@ struct WarmupPlanView: View {
         VStack(spacing: 16) {
             HStack(alignment: .firstTextBaseline, spacing: 4) {
                 Text(formattedElapsed)
-                    .font(.system(size: 44, weight: .bold, design: .monospaced))
+                    .font(.largeTitle.weight(.bold))
+                    .monospacedDigit()
                     .foregroundColor(.primary)
                 Text(" / 10:00")
                     .font(.title2)
@@ -127,6 +128,12 @@ struct WarmupPlanView: View {
             }
             .accessibilityElement(children: .combine)
             .accessibilityLabel("\(elapsedSeconds / 60) minutes \(elapsedSeconds % 60) seconds of 10 minutes")
+
+            if let plan = plan, currentSegmentIndex < plan.segments.count, elapsedSeconds > 0 || isRunning {
+                Text(plan.segments[currentSegmentIndex].title)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
 
             ProgressView(value: Double(elapsedSeconds), total: Double(totalSeconds))
                 .tint(.orange)

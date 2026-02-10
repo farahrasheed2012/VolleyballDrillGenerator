@@ -9,6 +9,9 @@ class DrillStore: ObservableObject {
     // All drills from the JSON database
     @Published var allDrills: [Drill] = []
 
+    /// Non-nil when drill JSON failed to load; UI can show message and retry.
+    @Published var loadError: String?
+
     // The randomly chosen "Drill of the Day"
     @Published var drillOfTheDay: Drill?
 
@@ -31,7 +34,7 @@ class DrillStore: ObservableObject {
     private let maxRecentCount = 10
 
     init() {
-        loadDrills()
+        loadDrillsFromBundle()
         pickDrillOfTheDay()
         loadPracticePlan()
         loadWarmupPlan()
@@ -41,20 +44,30 @@ class DrillStore: ObservableObject {
 
     // MARK: - Loading
 
-    /// Load drills from the bundled volleyball_drills.json
-    private func loadDrills() {
+    /// Load drills from the bundled volleyball_drills.json. Sets loadError on failure.
+    private func loadDrillsFromBundle() {
+        loadError = nil
         guard let url = Bundle.main.url(forResource: "volleyball_drills",
                                         withExtension: "json") else {
-            print("volleyball_drills.json not found in bundle")
+            loadError = "Drills couldn't be loaded."
             return
         }
-
         do {
             let data = try Data(contentsOf: url)
             let decoded = try JSONDecoder().decode([Drill].self, from: data)
             allDrills = decoded
         } catch {
-            print("Failed to decode drills: \(error)")
+            loadError = "Drills couldn't be loaded."
+        }
+    }
+
+    /// Call after load failure to retry loading the drill database.
+    func retryLoadDrills() {
+        loadDrillsFromBundle()
+        if loadError == nil {
+            pickDrillOfTheDay()
+            loadPracticePlan()
+            loadWarmupPlan()
         }
     }
 
@@ -98,10 +111,14 @@ class DrillStore: ObservableObject {
 
     // MARK: - Practice Plan Persistence
 
-    /// Save the current practice plan drill names to UserDefaults
+    /// Save the current practice plan drill names to UserDefaults. Triggers brief "Plan saved" feedback in UI.
     func savePracticePlan() {
         let names = practicePlan.map(\.name)
         UserDefaults.standard.set(names, forKey: planKey)
+        planSavedAt = Date()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            self?.planSavedAt = nil
+        }
     }
 
     /// Load a previously saved practice plan
@@ -123,6 +140,10 @@ class DrillStore: ObservableObject {
             UserDefaults.standard.set(level.rawValue, forKey: warmupPlanKey)
         } else {
             UserDefaults.standard.removeObject(forKey: warmupPlanKey)
+        }
+        planSavedAt = Date()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            self?.planSavedAt = nil
         }
     }
 
@@ -149,6 +170,9 @@ class DrillStore: ObservableObject {
         saveWarmupPlan()
     }
 
+    /// Last time the plan was saved; UI uses this to show "Plan saved" briefly.
+    @Published var planSavedAt: Date?
+
     /// Set or clear warmup as first item in practice plan
     func setWarmupInPlan(level: PlayerLevel?) {
         practicePlanWarmupLevel = level
@@ -162,18 +186,24 @@ class DrillStore: ObservableObject {
         return warmupMinutes + drillMinutes
     }
 
-    /// Generate a random plan for the given level: warmup + 4 drills across skills
+    /// Generate a random plan for the given level: warmup + 4–5 drills across skills (blocking for intermediate).
     func generatePlan(for level: PlayerLevel) {
         var plan: [Drill] = []
-        let skills: [SkillCategory] = [.serving, .passing, .setting, .hitting]
-        for skill in skills {
+        let coreSkills: [SkillCategory] = [.serving, .passing, .setting, .hitting]
+        for skill in coreSkills {
             if let drill = randomDrill(for: skill, level: level), !plan.contains(where: { $0.name == drill.name }) {
                 plan.append(drill)
             }
         }
-        if plan.count < 4 {
-            let extra = drills(for: .defense, level: level).randomElement()
-            if let e = extra, plan.count < 5 { plan.append(e) }
+        if plan.count < 5 {
+            if let e = drills(for: .defense, level: level).randomElement(), !plan.contains(where: { $0.name == e.name }) {
+                plan.append(e)
+            }
+        }
+        if plan.count < 5, level == .intermediate {
+            if let b = drills(for: .blocking, level: level).randomElement(), !plan.contains(where: { $0.name == b.name }) {
+                plan.append(b)
+            }
         }
         practicePlan = Array(plan.prefix(5))
         practicePlanWarmupLevel = level
