@@ -10,14 +10,14 @@ struct DrillDetailView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 24) {
 
                 // Hero image for the drill
                 DrillImageView(drill: drill, mode: .hero)
-                    .padding(.horizontal, -16) // bleed to edges
+                    .padding(.horizontal, -16)
 
                 // Skill + Level badges
-                HStack(spacing: 8) {
+                HStack(spacing: 10) {
                     if let cat = drill.skillCategory {
                         HStack {
                             Image(systemName: cat.icon)
@@ -47,37 +47,38 @@ struct DrillDetailView: View {
 
                 // Description
                 Text("Instructions")
-                    .font(.title3.bold())
+                    .font(.headline)
 
                 Text(drill.description)
                     .font(.body)
-                    .lineSpacing(4)
+                    .lineSpacing(5)
                     .fixedSize(horizontal: false, vertical: true)
 
                 Divider()
 
                 // Equipment
                 Text("Equipment")
-                    .font(.title3.bold())
+                    .font(.headline)
 
                 ForEach(drill.equipment, id: \.self) { item in
-                    HStack(spacing: 8) {
+                    HStack(spacing: 10) {
                         Image(systemName: "checkmark.circle.fill")
+                            .font(.body)
                             .foregroundColor(.green)
                         Text(item)
+                            .font(.body)
                     }
-                    .font(.body)
                 }
 
                 Divider()
 
                 // Source link
                 if let url = URL(string: drill.source), !drill.source.isEmpty {
-                    VStack(alignment: .leading, spacing: 4) {
+                    VStack(alignment: .leading, spacing: 6) {
                         Text("Source")
-                            .font(.title3.bold())
+                            .font(.headline)
                         Link(destination: url) {
-                            HStack {
+                            HStack(spacing: 6) {
                                 Image(systemName: "link")
                                 Text("View Original Source")
                             }
@@ -92,21 +93,17 @@ struct DrillDetailView: View {
                 Button {
                     store.toggleInPlan(drill)
                 } label: {
-                    HStack {
-                        Image(systemName: store.isInPlan(drill)
-                              ? "minus.circle.fill"
-                              : "plus.circle.fill")
-                        Text(store.isInPlan(drill)
-                             ? "Remove from Practice Plan"
-                             : "Add to Practice Plan")
-                    }
+                    Label(
+                        store.isInPlan(drill) ? "Remove from Practice Plan" : "Add to Practice Plan",
+                        systemImage: store.isInPlan(drill) ? "minus.circle.fill" : "plus.circle.fill"
+                    )
                     .font(.headline)
-                    .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-                    .background(store.isInPlan(drill) ? Color.red : Color.orange,
-                                in: RoundedRectangle(cornerRadius: 14))
+                    .frame(minHeight: 50)
                 }
+                .buttonStyle(.borderedProminent)
+                .tint(store.isInPlan(drill) ? .red : .orange)
+                .controlSize(.large)
 
                 if store.practicePlan.count >= 5 && !store.isInPlan(drill) {
                     Text("Practice plan is full (max 5 drills). Remove one first.")
@@ -114,7 +111,7 @@ struct DrillDetailView: View {
                         .foregroundColor(.secondary)
                 }
             }
-            .padding()
+            .padding(20)
         }
         .navigationTitle(drill.name)
         .navigationBarTitleDisplayMode(.large)

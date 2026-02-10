@@ -37,24 +37,24 @@ struct ContentView: View {
     }
 
     private func loadErrorView(message: String) -> some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 24) {
             Image(systemName: "exclamationmark.triangle")
                 .font(.largeTitle)
-                .foregroundColor(.orange)
+                .symbolRenderingMode(.hierarchical)
+                .foregroundStyle(.secondary)
             Text(message)
                 .font(.body)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 40)
+                .padding(.horizontal, 32)
             Button("Retry") {
                 store.retryLoadDrills()
             }
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding(.horizontal, 24)
-            .padding(.vertical, 12)
-            .background(Color.orange, in: RoundedRectangle(cornerRadius: 12))
+            .buttonStyle(.borderedProminent)
+            .tint(.orange)
+            .controlSize(.large)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(.systemGroupedBackground))
     }
 }

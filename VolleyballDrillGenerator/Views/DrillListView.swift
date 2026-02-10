@@ -45,132 +45,139 @@ struct DrillListView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .padding(.horizontal)
-                .padding(.top)
+                .padding(.horizontal, 16)
+                .padding(.top, 12)
 
                 // Recently viewed (when available)
                 if !store.recentlyViewedDrills.isEmpty {
-                    VStack(alignment: .leading, spacing: 6) {
+                    VStack(alignment: .leading, spacing: 8) {
                         Text("Recently viewed")
-                            .font(.caption.bold())
+                            .font(.subheadline.weight(.semibold))
                             .foregroundColor(.secondary)
-                            .padding(.horizontal)
+                            .padding(.horizontal, 16)
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 10) {
                                 ForEach(store.recentlyViewedDrills.prefix(5)) { drill in
                                     NavigationLink(destination: DrillDetailView(drill: drill)) {
                                         Text(drill.name)
-                                            .font(.caption)
+                                            .font(.subheadline)
                                             .lineLimit(1)
-                                            .padding(.horizontal, 10)
-                                            .padding(.vertical, 6)
-                                            .background(Color(.systemGray5), in: Capsule())
+                                            .padding(.horizontal, 12)
+                                            .padding(.vertical, 10)
+                                            .background(Color(.tertiarySystemFill), in: Capsule())
                                     }
                                     .buttonStyle(.plain)
                                 }
                             }
-                            .padding(.horizontal)
+                            .padding(.horizontal, 16)
                         }
                     }
-                    .padding(.bottom, 4)
+                    .padding(.bottom, 8)
                 }
 
                 // Level filter chips
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 8) {
+                    HStack(spacing: 10) {
                         // Favorites chip
                         Button {
                             withAnimation { showFavoritesOnly.toggle() }
                         } label: {
-                            HStack(spacing: 3) {
+                            HStack(spacing: 4) {
                                 Image(systemName: showFavoritesOnly ? "heart.fill" : "heart")
-                                    .font(.caption2)
+                                    .font(.caption)
                                 Text("Favorites")
-                                    .font(.caption.bold())
+                                    .font(.subheadline.weight(.semibold))
                             }
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 6)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 10)
                             .foregroundColor(showFavoritesOnly ? .white : .primary)
-                            .background(showFavoritesOnly ? Color.pink : Color(.systemGray5),
+                            .background(showFavoritesOnly ? Color.pink : Color(.tertiarySystemFill),
                                         in: Capsule())
                         }
+                        .buttonStyle(.plain)
 
                         // "All Levels" chip
                         Button {
                             withAnimation { selectedLevel = nil }
                         } label: {
                             Text("All Levels")
-                                .font(.caption.bold())
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 6)
+                                .font(.subheadline.weight(.semibold))
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 10)
                                 .foregroundColor(selectedLevel == nil ? .white : .primary)
-                                .background(selectedLevel == nil ? Color.orange : Color(.systemGray5),
+                                .background(selectedLevel == nil ? Color.orange : Color(.tertiarySystemFill),
                                             in: Capsule())
                         }
+                        .buttonStyle(.plain)
 
                         ForEach(PlayerLevel.allCases) { level in
                             Button {
                                 withAnimation { selectedLevel = level }
                             } label: {
-                                HStack(spacing: 3) {
+                                HStack(spacing: 4) {
                                     Image(systemName: level.icon)
-                                        .font(.caption2)
+                                        .font(.caption)
                                     Text(level.shortLabel)
-                                        .font(.caption.bold())
+                                        .font(.subheadline.weight(.semibold))
                                 }
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 6)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 10)
                                 .foregroundColor(selectedLevel == level ? .white : .primary)
-                                .background(selectedLevel == level ? level.color : Color(.systemGray5),
+                                .background(selectedLevel == level ? level.color : Color(.tertiarySystemFill),
                                             in: Capsule())
                             }
+                            .buttonStyle(.plain)
                         }
                     }
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
                 }
 
                 // Drill count
                 HStack {
                     Text("\(filteredDrills.count) drill\(filteredDrills.count == 1 ? "" : "s")")
-                        .font(.caption)
+                        .font(.subheadline)
                         .foregroundColor(.secondary)
                     Spacer()
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, 16)
+                .padding(.bottom, 4)
 
                 // Drill list or empty state
                 if filteredDrills.isEmpty {
-                    VStack(spacing: 16) {
+                    VStack(spacing: 20) {
                         Image(systemName: "magnifyingglass")
                             .font(.largeTitle)
-                            .foregroundColor(.orange.opacity(0.6))
+                            .symbolRenderingMode(.hierarchical)
+                            .foregroundStyle(.secondary)
                         Text("No drills match")
-                            .font(.headline)
+                            .font(.title3.weight(.semibold))
                         Text("Try a different skill, level, or search term.")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
+                            .padding(.horizontal, 32)
                         Button("Clear filters") {
                             searchText = ""
                             selectedLevel = nil
                         }
-                        .font(.subheadline.bold())
-                        .foregroundColor(.orange)
+                        .font(.subheadline.weight(.semibold))
+                        .buttonStyle(.bordered)
                         .padding(.top, 8)
                     }
                     .frame(maxWidth: .infinity)
-                    .padding(.top, 60)
+                    .padding(.top, 48)
                 } else {
                     List(filteredDrills) { drill in
                         NavigationLink(destination: DrillDetailView(drill: drill)) {
                             DrillRowView(drill: drill)
                         }
                     }
-                    .listStyle(.plain)
+                    .listStyle(.insetGrouped)
                 }
             }
             .navigationTitle("All Drills")
+            .background(Color(.systemGroupedBackground))
             .searchable(text: $searchText, prompt: "Search drills...")
         }
     }
@@ -183,41 +190,40 @@ struct DrillRowView: View {
     let drill: Drill
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text(drill.name)
                     .font(.headline)
 
                 Spacer()
 
-                // Level badge
                 if let lvl = drill.playerLevel {
                     HStack(spacing: 3) {
                         Image(systemName: lvl.icon)
                             .font(.caption2)
                         Text(lvl.shortLabel)
-                            .font(.caption2.bold())
+                            .font(.caption2.weight(.semibold))
                     }
-                    .padding(.horizontal, 6)
-                    .padding(.vertical, 3)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
                     .foregroundColor(.white)
                     .background(lvl.color, in: Capsule())
                 }
             }
 
             Text(drill.description.components(separatedBy: "\n").first ?? "")
-                .font(.caption)
+                .font(.subheadline)
                 .foregroundColor(.secondary)
                 .lineLimit(2)
 
             HStack(spacing: 4) {
                 Image(systemName: "sportscourt")
-                    .font(.caption2)
+                    .font(.caption)
                 Text(drill.equipment.joined(separator: ", "))
-                    .font(.caption2)
+                    .font(.caption)
             }
-            .foregroundColor(.orange)
+            .foregroundColor(.secondary)
         }
-        .padding(.vertical, 4)
+        .padding(.vertical, 8)
     }
 }

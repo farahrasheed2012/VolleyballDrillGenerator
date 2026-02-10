@@ -29,42 +29,45 @@ struct PracticePlanView: View {
     }
 
     private var emptyState: some View {
-        VStack(spacing: 24) {
+        VStack(spacing: 28) {
             Image(systemName: "calendar.badge.plus")
                 .font(.largeTitle)
-                .foregroundColor(.orange.opacity(0.6))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundStyle(.secondary)
             Text("No Drills in Plan")
-                .font(.title3.bold())
+                .font(.title3.weight(.semibold))
             Text("Generate a plan or browse drills and tap + to add up to 5 drills.")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .multilineTextAlignment(.center)
-                .padding(.horizontal, 40)
+                .padding(.horizontal, 32)
 
-            VStack(spacing: 12) {
+            VStack(spacing: 16) {
                 Picker("Level", selection: $generateLevel) {
                     ForEach(PlayerLevel.allCases) { level in
                         Text(level.shortLabel).tag(level)
                     }
                 }
                 .pickerStyle(.segmented)
-                .padding(.horizontal, 40)
+                .padding(.horizontal, 24)
 
                 Button {
                     store.generatePlan(for: generateLevel)
                 } label: {
                     Label("Generate a plan", systemImage: "wand.and.stars")
                         .font(.headline)
-                        .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
-                        .background(Color.orange, in: RoundedRectangle(cornerRadius: 14))
+                        .frame(minHeight: 50)
                 }
-                .padding(.horizontal, 40)
+                .buttonStyle(.borderedProminent)
+                .tint(.orange)
+                .controlSize(.large)
+                .padding(.horizontal, 24)
             }
             .padding(.top, 8)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(.systemGroupedBackground))
     }
 
     private var planList: some View {
