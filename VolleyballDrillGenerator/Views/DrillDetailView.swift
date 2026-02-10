@@ -103,7 +103,7 @@ struct DrillDetailView: View {
                     .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
-                .tint(store.isInPlan(drill) ? .red : .orange)
+                .tint(store.isInPlan(drill) ? .red : .blue)
                 .controlSize(.regular)
 
                 if store.practicePlan.count >= 5 && !store.isInPlan(drill) {
@@ -126,7 +126,7 @@ struct DrillDetailView: View {
                     store.toggleFavorite(drill)
                 } label: {
                     Image(systemName: store.isFavorite(drill) ? "heart.fill" : "heart")
-                        .foregroundColor(store.isFavorite(drill) ? .red : .primary)
+                        .foregroundColor(store.isFavorite(drill) ? .blue : .primary)
                 }
                 .accessibilityLabel(store.isFavorite(drill) ? "Remove from favorites" : "Add to favorites")
             }

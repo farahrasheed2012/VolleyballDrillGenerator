@@ -58,7 +58,7 @@ struct WarmupPlanView: View {
                                     .frame(maxWidth: .infinity)
                             }
                             .buttonStyle(.borderedProminent)
-                            .tint(.orange)
+                            .tint(.blue)
                             .controlSize(.regular)
                             .padding(.horizontal, 20)
                         }
@@ -139,7 +139,7 @@ struct WarmupPlanView: View {
             }
 
             ProgressView(value: Double(elapsedSeconds), total: Double(totalSeconds))
-                .tint(.orange)
+                .tint(.blue)
                 .scaleEffect(y: 1.2)
 
             HStack(spacing: 12) {
@@ -152,7 +152,7 @@ struct WarmupPlanView: View {
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
-                    .tint(.orange)
+                    .tint(.blue)
                     .controlSize(.regular)
                     .accessibilityHint("Starts the 10-minute warmup timer")
                 } else {
@@ -165,7 +165,7 @@ struct WarmupPlanView: View {
                                 .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.borderedProminent)
-                        .tint(.orange)
+                        .tint(.blue)
                         .controlSize(.regular)
                         .accessibilityHint("Pauses the timer")
                     } else {
@@ -177,7 +177,7 @@ struct WarmupPlanView: View {
                                 .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.borderedProminent)
-                        .tint(.orange)
+                        .tint(.blue)
                         .controlSize(.regular)
                         .accessibilityHint("Resumes the timer")
                     }
@@ -191,7 +191,7 @@ struct WarmupPlanView: View {
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.bordered)
-                    .tint(.orange)
+                    .tint(.blue)
                     .controlSize(.regular)
                     .accessibilityHint("Resets the timer to zero")
                 }
@@ -204,7 +204,7 @@ struct WarmupPlanView: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.plain)
-                .foregroundColor(.orange)
+                .foregroundColor(.blue)
                 .controlSize(.regular)
                 .accessibilityHint("Jumps to the next warmup segment")
             }
@@ -232,7 +232,7 @@ private struct WarmupSegmentCard: View {
                 HStack(spacing: 10) {
                     Image(systemName: segment.icon)
                         .font(.title2)
-                        .foregroundColor(isActive ? .white : .orange)
+                        .foregroundColor(isActive ? .white : .blue)
                         .frame(width: 32, alignment: .center)
                     VStack(alignment: .leading, spacing: 2) {
                         HStack(spacing: 6) {
@@ -244,7 +244,7 @@ private struct WarmupSegmentCard: View {
                                     .foregroundColor(.white)
                                     .padding(.horizontal, 6)
                                     .padding(.vertical, 2)
-                                    .background(Color.orange, in: Capsule())
+                                    .background(Color.blue, in: Capsule())
                             } else if isPast {
                                 Image(systemName: "checkmark.circle.fill")
                                     .font(.caption)
@@ -258,10 +258,10 @@ private struct WarmupSegmentCard: View {
                     Spacer()
                     Text("\(segment.durationMinutes) min")
                         .font(.subheadline.bold())
-                        .foregroundColor(isActive ? .orange : .white)
+                        .foregroundColor(isActive ? .blue : .white)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 4)
-                        .background(isActive ? Color.orange.opacity(0.2) : Color.orange, in: Capsule())
+                        .background(isActive ? Color.blue.opacity(0.2) : Color.blue, in: Capsule())
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                         .font(.subheadline.bold())
                         .foregroundColor(.secondary)
@@ -280,7 +280,7 @@ private struct WarmupSegmentCard: View {
                                     .font(.caption.bold())
                                     .foregroundColor(.white)
                                     .frame(width: 22, height: 22, alignment: .center)
-                                    .background(Color.orange, in: Circle())
+                                    .background(Color.blue, in: Circle())
                                 Text(step)
                                     .font(.subheadline)
                                     .fixedSize(horizontal: false, vertical: true)
@@ -305,7 +305,7 @@ private struct WarmupSegmentCard: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 16)
-                .stroke(isActive ? Color.orange : Color.clear, lineWidth: 2)
+                .stroke(isActive ? Color.blue : Color.clear, lineWidth: 2)
         )
         .padding(.horizontal, 20)
         .accessibilityLabel("\(segment.title), \(segment.timeRange). \(isExpanded ? "Steps expanded" : "Double tap to show steps")")

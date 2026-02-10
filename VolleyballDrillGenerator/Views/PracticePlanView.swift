@@ -59,7 +59,7 @@ struct PracticePlanView: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
-                .tint(.orange)
+                .tint(.blue)
                 .controlSize(.regular)
                 .padding(.horizontal, 28)
             }
@@ -82,7 +82,7 @@ struct PracticePlanView: View {
                         if store.estimatedPlanMinutes > 0 {
                             Text("~\(store.estimatedPlanMinutes) min total")
                                 .font(.caption)
-                                .foregroundColor(.orange)
+                                .foregroundColor(.blue)
                         }
                     }
                     Spacer()
@@ -96,7 +96,7 @@ struct PracticePlanView: View {
                             .foregroundColor(.white)
                             .padding(.horizontal, 10)
                             .padding(.vertical, 4)
-                            .background(Color.orange, in: Capsule())
+                            .background(Color.blue, in: Capsule())
                     } else {
                         Text("Add \(3 - store.practicePlan.count) more")
                             .font(.caption.bold())
@@ -115,7 +115,7 @@ struct PracticePlanView: View {
                             .font(.headline.bold())
                             .foregroundColor(.white)
                             .frame(width: 32, height: 32)
-                            .background(Color.orange, in: Circle())
+                            .background(Color.blue, in: Circle())
                         NavigationLink(destination: WarmupPlanView(level: level)) {
                             VStack(alignment: .leading, spacing: 2) {
                                 Text("10-min warmup")
@@ -142,7 +142,7 @@ struct PracticePlanView: View {
                                 .font(.headline.bold())
                                 .foregroundColor(.white)
                                 .frame(width: 32, height: 32)
-                                .background(Color.orange, in: Circle())
+                                .background(Color.blue, in: Circle())
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(drill.name)
                                     .font(.subheadline.bold())

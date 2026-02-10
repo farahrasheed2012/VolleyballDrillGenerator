@@ -130,7 +130,7 @@ struct GeneratorView: View {
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
-                    .tint(.orange)
+                    .tint(.blue)
                     .controlSize(.regular)
                     .padding(.horizontal, 20)
 
@@ -153,7 +153,7 @@ struct GeneratorView: View {
                                 .font(.subheadline.weight(.medium))
                             }
                             .buttonStyle(.bordered)
-                            .tint(store.isInPlan(drill) ? .red : .orange)
+                            .tint(store.isInPlan(drill) ? .red : .blue)
                             .disabled(store.practicePlan.count >= 5 && !store.isInPlan(drill))
                             .opacity(store.practicePlan.count >= 5 && !store.isInPlan(drill) ? 0.6 : 1)
                         }
@@ -203,7 +203,7 @@ struct LevelChip: View {
             .padding(.horizontal, 14)
             .padding(.vertical, 12)
             .foregroundColor(isSelected ? .white : .primary)
-            .background(isSelected ? level.color : Color(.tertiarySystemFill),
+            .background(isSelected ? Color.blue : Color(.tertiarySystemFill),
                         in: Capsule())
         }
         .buttonStyle(.plain)
@@ -230,7 +230,7 @@ struct SkillChip: View {
             .padding(.horizontal, 14)
             .padding(.vertical, 12)
             .foregroundColor(isSelected ? .white : .primary)
-            .background(isSelected ? Color.orange : Color(.tertiarySystemFill),
+            .background(isSelected ? Color.blue : Color(.tertiarySystemFill),
                         in: Capsule())
         }
         .buttonStyle(.plain)

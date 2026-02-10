@@ -89,7 +89,7 @@ struct DrillListView: View {
                             .padding(.horizontal, 12)
                             .padding(.vertical, 10)
                             .foregroundColor(showFavoritesOnly ? .white : .primary)
-                            .background(showFavoritesOnly ? Color.pink : Color(.tertiarySystemFill),
+                            .background(showFavoritesOnly ? Color.blue : Color(.tertiarySystemFill),
                                         in: Capsule())
                         }
                         .buttonStyle(.plain)
@@ -103,7 +103,7 @@ struct DrillListView: View {
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 10)
                                 .foregroundColor(selectedLevel == nil ? .white : .primary)
-                                .background(selectedLevel == nil ? Color.orange : Color(.tertiarySystemFill),
+                                .background(selectedLevel == nil ? Color.blue : Color(.tertiarySystemFill),
                                             in: Capsule())
                         }
                         .buttonStyle(.plain)
@@ -121,7 +121,7 @@ struct DrillListView: View {
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 10)
                                 .foregroundColor(selectedLevel == level ? .white : .primary)
-                                .background(selectedLevel == level ? level.color : Color(.tertiarySystemFill),
+                                .background(selectedLevel == level ? Color.blue : Color(.tertiarySystemFill),
                                             in: Capsule())
                             }
                             .buttonStyle(.plain)

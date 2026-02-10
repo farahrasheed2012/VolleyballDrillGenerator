@@ -31,7 +31,7 @@ struct ContentView: View {
                         .accessibilityLabel("Practice Plan")
                         .accessibilityHint("View and edit your practice session")
                 }
-                .accentColor(.orange)
+                .accentColor(.blue)
             }
         }
     }
@@ -51,7 +51,7 @@ struct ContentView: View {
                 store.retryLoadDrills()
             }
             .buttonStyle(.borderedProminent)
-            .tint(.orange)
+            .tint(.blue)
             .controlSize(.regular)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
